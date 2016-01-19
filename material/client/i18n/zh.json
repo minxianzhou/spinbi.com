@@ -1,4 +1,10 @@
 {
+    "CONTACTS": "客户联系",
+    "CREATE_USER": "创建用户",
+    "SEARCH_USER": "查找用户",
+
+
+
     "JOHN_Doe": "李四",
     "LISA": "麗莎",
     "MY_PROFILE": "個人資料",
@@ -112,4 +118,7 @@
     "COMBINATION": "混合",
     "FUNNEL": "漏斗",
     "THEMES": "主題"
+
+
+
 }

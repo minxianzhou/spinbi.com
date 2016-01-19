@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app')
-        .config(['$stateProvider', '$urlRouterProvider', function($stateProvider, $urlRouterProvider) {
+        .config(['$stateProvider', '$urlRouterProvider', '$locationProvider', function($stateProvider, $urlRouterProvider,$locationProvider) {
             var routes, setRoutes;
 
             routes = [
@@ -12,7 +12,7 @@
                 'form/elements', 'form/layouts', 'form/validation', 'form/wizard',
                 'chart/echarts', 'chart/echarts-line', 'chart/echarts-bar', 'chart/echarts-pie', 'chart/echarts-scatter', 'chart/echarts-more',
                 'page/404', 'page/500', 'page/blank', 'page/forgot-password', 'page/invoice', 'page/lock-screen', 'page/profile', 'page/signin', 'page/signup',
-                'app/calendar'
+                'app/calendar','views/dashboard'
             ]
 
             setRoutes = function(route) {
@@ -39,6 +39,8 @@
                 url: '/dashboard',
                 templateUrl: 'app/dashboard/dashboard.html'
             });
+
+            $locationProvider.html5Mode(true);
 
         }]
     );

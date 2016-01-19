@@ -1,4 +1,8 @@
 {
+    "CONTACTS": "Contacts",
+    "CREATE_USER": "Create User",
+    "SEARCH_USER": "Search User",
+
     "JOHN_DOE": "John Doe",
     "LISA": "Lisa",
     "MY_PROFILE": "My Profile",
@@ -112,4 +116,9 @@
     "COMBINATION": "Combination",
     "FUNNEL": "Funnel",
     "THEMES": "Themes"
+
+
+
+
+    
 }
