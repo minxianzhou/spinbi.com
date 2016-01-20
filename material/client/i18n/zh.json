@@ -3,7 +3,8 @@
     "CREATE_USER": "创建用户",
     "SEARCH_USER": "查找用户",
     "TANSLATE": "翻译",
-
+    "TANSLATION_MANAGEMENT": "翻译管理",
+    "MANAGEMENT": "管理",
 
 
     "JOHN_Doe": "李四",

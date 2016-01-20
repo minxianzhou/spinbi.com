@@ -8,15 +8,29 @@
 
 
 			</md-input-container>
-			<button class="md-raised btn-w-md md-primary md-button md-ink-ripple " type="button" ng-click="translate()" ><span class="ng-scope">Primary</span></button>
+			<button class="md-raised btn-w-md md-primary md-button md-ink-ripple " type="button" ng-click="translate()" ><span class="ng-scope">Translate</span></button>
 		</div>
 	</div>
 
-	<div class="row">
-		<iframe class="col-xs-12" src="">
-			
+	<div class="callout callout-success" ng-if="!started">
+        <span>Translate Result Will Show Here .....</span>
+    </div>
 
+	<div class="panel panel-default" ng-if="started">
+		<div class="panel-body padding-lg ">
 
-		</iframe>
+			<div ng-if="loading">
+				<md-progress-circular md-mode="indeterminate" md-diameter="96" aria-valuemin="0" aria-valuemax="100" role="progressbar" class="center" style="width: 96px; height: 96px;"><div class="md-scale-wrapper md-mode-indeterminate" style="transform: translate(-50%, -50%) scale(0.96);"><div class="md-spinner-wrapper"><div class="md-inner"><div class="md-gap"></div><div class="md-left"><div class="md-half-circle"></div></div><div class="md-right"><div class="md-half-circle"></div></div></div></div></div>
+				</md-progress-circular>
+
+			</div>
+
+			<iframe ng-show="!loading&&successed" class="display-iframe" id="returnResult" ></iframe>
+		</div>
 	</div>
+
+
+
+
+
 </div>

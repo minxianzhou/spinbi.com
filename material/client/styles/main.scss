@@ -42,6 +42,15 @@
 ,   "layout/body"
 ;
 
-.andy{
+.display-iframe{
 	color: red;
+	border: 0;
+	width: 100%;
+	min-height: 900px;
+	background-color: gray;
+}
+
+.center{
+	text-align: center;
+	margin: 0 auto;
 }
