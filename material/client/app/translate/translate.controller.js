@@ -26,6 +26,36 @@
         $scope.started = false;  
 
 
+        $scope.createItem = function(){
+            var baseLink= 'api/translate';
+            $http.post(
+                    baseLink, 
+                    {
+                        language : 'ZH',
+                        pattern : 'room',
+                        text : '房间',
+                        length : 0
+                    }, 
+                    {}
+                ).then(function(res){
+                   
+                    //$scope.result = res.data;  
+                },function(err){
+                   if(err)
+                        console.log(err);
+                });
+        };
+
+
+        $scope.print = function(){
+
+            //$('#returnResult').print();
+            console.log(window);
+            window.frames[0].focus();
+            window.frames[0].print();
+        };
+
+
         $scope.translate = function(){
             console.log($scope.link );
 
@@ -41,7 +71,7 @@
                 return false;    
             }
 
-
+            var baseLink= 'http://localhost:1000/api/content';
             $scope.started = true;  
             $scope.loading = true;  
             $scope.successed = false; 
@@ -51,7 +81,7 @@
             };
 
             $http.post(
-                    'http://135.23.248.123:8080/api/content', 
+                    baseLink, 
                     {
                         link: $scope.link 
                     }, 

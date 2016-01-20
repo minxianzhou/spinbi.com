@@ -3,12 +3,15 @@
 	<div class="panel panel-default">
 		<div class="panel-body padding-lg">
 			<md-input-container class="md-block md-input-has-value">
-				<label for="input_link">URL Link</label>
+				<label for="input_link">Paste Your Toronto MLS Link ...</label>
 				<input ng-model="link" class="ng-pristine ng-valid md-input ng-touched" id="input_link"  aria-invalid="false" style=""><div class="md-errors-spacer"></div>
 
 
 			</md-input-container>
 			<button class="md-raised btn-w-md md-primary md-button md-ink-ripple " type="button" ng-click="translate()" ><span class="ng-scope">Translate</span></button>
+			<button ng-if="successed" class="md-raised btn-w-md md-accent   md-button md-ink-ripple " type="button" ng-click="print()" ><span class="ng-scope">print</span></button>
+
+			<a ng-click="createItem()">create</a>
 		</div>
 	</div>
 
