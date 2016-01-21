@@ -54,3 +54,16 @@
 	text-align: center;
 	margin: 0 auto;
 }
+
+.traslation-panel{
+	max-height: 600px;
+	overflow-y:auto;
+}
+
+.traslation-feild-item{
+	width: 300px;
+	height: 150px;
+	float: left;
+	margin: 0 25px 25px 0;
+	overflow: hidden;
+}

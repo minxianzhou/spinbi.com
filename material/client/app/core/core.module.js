@@ -10,6 +10,7 @@
         // Custom modules
         ,'app.layout'
         ,'app.i18n'
+        // ,'app.translate'
         
         // 3rd Party Modules
         ,'ngMaterial'

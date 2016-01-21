@@ -1,7 +1,7 @@
 (function () {
     'use strict';
 
-    var app = angular.module('app.table');
+    var app = angular.module('app.translate',['app.services']);
 
     // app.config(function($httpProvider) {
     //     //Enable cross domain calls
@@ -13,10 +13,13 @@
     // });
 
 
-    app.controller('TranslateCtrl', ['$scope', '$filter' , '$http', '$mdToast', TranslateCtrl]);
 
 
-    function TranslateCtrl($scope, $filter, $http, $mdToast) {
+    app.controller('TranslateCtrl', ['$scope', '$filter' , '$http', '$mdToast','TranslationService', TranslateCtrl]);
+
+
+
+    function TranslateCtrl($scope, $filter, $http, $mdToast, TranslationService) {
         
         $scope.link ='';  
 
@@ -26,24 +29,42 @@
         $scope.started = false;  
 
 
+        // console.log(TranslationService.CreateTranslationFeild({andy:'handsome'}));
+
         $scope.createItem = function(){
-            var baseLink= 'api/translate';
-            $http.post(
-                    baseLink, 
-                    {
-                        language : 'ZH',
-                        pattern : 'room',
-                        text : '房间',
-                        length : 0
-                    }, 
-                    {}
-                ).then(function(res){
+
+
+            // var baseLink= 'http://localhost:1000/api/translate';
+            // $http.post(
+            //         baseLink, 
+            //         {
+            //             language : 'ZH',
+            //             pattern : 'room',
+            //             text : '房间',
+            //             length : 0
+            //         }, 
+            //         {}
+            //     ).then(function(res){
                    
-                    //$scope.result = res.data;  
-                },function(err){
-                   if(err)
-                        console.log(err);
-                });
+            //         //$scope.result = res.data;  
+            //     },function(err){
+            //        if(err)
+            //             console.log(err);
+            //     });
+
+            TranslationService.CreateTranslationFeild(
+                {
+                    language : 'ZH',
+                    pattern : 'room',
+                    text : '房间',
+                    length : 0
+                },
+                function(response){
+                    console.log(response);
+                }
+            );  
+
+
         };
 
 
@@ -91,7 +112,11 @@
 
                     var doc = document.getElementById('returnResult').contentWindow.document;
                     doc.open();
-                    doc.write(res.data);
+
+                    var cssHtml = '<style type="text/css">@media print{body{ background-color:#FFFFFF; background-image:none; color:#000000 }#ad{ display:none;}#leftbar{ display:none;}#contentarea{ width:100%;}}</style>';
+
+
+                    doc.write( cssHtml +res.data);
                     doc.close();
 
                     $scope.loading = false;  
@@ -105,5 +130,23 @@
 
         };
     }
+
+
+
+    app.controller('TranslateManagementCtrl', ['$scope', '$filter' , '$http', '$mdToast','TranslationService', TranslateManagementCtrl]);
+    function TranslateManagementCtrl($scope, $filter, $http, $mdToast, TranslationService) {
+        $scope.states = [
+            {
+                code: 'CA',
+                desc: "Canada"
+            }
+        ];
+    }
+
+
+
+
+
+
 
 })(); 

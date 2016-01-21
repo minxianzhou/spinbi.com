@@ -12,6 +12,14 @@
         ,'app.ui.form.validation'
         ,'app.page'
         ,'app.table'
+
+        // custom controllers
+        ,'app.translate'
+
+        // Custome service
+        ,'app.services'
+
+
         
         // 3rd party feature modules
         ,'ui.tree'
