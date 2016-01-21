@@ -69,13 +69,16 @@
 
 
         $scope.print = function(){
-
-            //$('#returnResult').print();
-            console.log(window);
             window.frames[0].focus();
             window.frames[0].print();
         };
 
+        $scope.clear = function(){
+            $scope.link =''; 
+            $scope.loading = false;  
+            $scope.successed = false; 
+            $scope.started = false;     
+        };
 
         $scope.translate = function(){
             console.log($scope.link );
@@ -139,6 +142,14 @@
             {
                 code: 'CA',
                 desc: "Canada"
+            },
+            {
+                code: 'US',
+                desc: "Unite State"
+            },
+            {
+                code: 'ZH',
+                desc: "China"
             }
         ];
     }

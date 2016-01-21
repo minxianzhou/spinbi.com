@@ -2,16 +2,21 @@
 
 	<div class="panel panel-default">
 		<div class="panel-body padding-lg">
+			
+			<!-- link input textbox -->
 			<md-input-container class="md-block md-input-has-value">
-				<label for="input_link">Paste Your Toronto MLS Link ...</label>
-				<input ng-model="link" class="ng-pristine ng-valid md-input ng-touched" id="input_link"  aria-invalid="false" style=""><div class="md-errors-spacer"></div>
-
-
+				<label for="input_link">Paste Your Toronto MLS Link Here...</label>
+				<input ng-model="link" class="ng-pristine ng-valid md-input ng-touched" id="input_link"  aria-invalid="false" style="" ng-disabled="loading||successed"><div class="md-errors-spacer"></div>
 			</md-input-container>
-			<button class="md-raised btn-w-md md-primary md-button md-ink-ripple " type="button" ng-click="translate()" ><span class="ng-scope">Translate</span></button>
-			<button ng-if="successed" class="md-raised btn-w-md md-accent   md-button md-ink-ripple " type="button" ng-click="print()" ><span class="ng-scope">print</span></button>
 
-			<a ng-click="createItem()">create</a>
+			<!-- translate start button -->
+			<button ng-diabled="successed" class="md-raised btn-w-md md-primary md-button md-ink-ripple " type="button" ng-click="translate()"  ng-disabled="loading||successed"><span class="ng-scope">Translate</span></button>
+			<!-- print result button -->
+			<button ng-if="successed" class="md-raised btn-w-md md-accent   md-button md-ink-ripple " type="button" ng-click="print()" ><span class="ng-scope">print</span></button>
+			<!-- clear result btton -->
+			<button ng-if="successed" class="md-raised btn-w-md md-warn   md-button md-ink-ripple " type="button" ng-click="clear()" ><span class="ng-scope">Clear</span></button>
+
+			<!-- <a ng-click="createItem()">create</a> -->
 		</div>
 	</div>
 

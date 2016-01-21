@@ -12,8 +12,8 @@
 
 
 					 <md-input-container flex>
-					    <label>State</label>
-					    <md-select ng-model="user.state">
+					    <label>Select Language</label>
+					    <md-select ng-model="user.state" style="min-width: 150px">
 					        <md-option ng-repeat="state in states" value="{{state.code}}">
 					            {{state.desc}}
 					        </md-option>
