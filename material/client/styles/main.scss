@@ -42,11 +42,17 @@
 ,   "layout/body"
 ;
 
+
+.app > .main-container {
+	min-height: 97%;
+}
 .display-iframe{
 	color: red;
 	border: 0;
 	width: 100%;
-	min-height: 705px;
+	/*min-height: 705px;*/
+	/*height: 100%;*/
+
 	background-color: gray;
 }
 
@@ -63,7 +69,7 @@
 	transition: all 0.75s ease-in-out;
 
 	.add-item{
-		width: 285px;
+		width: 195px;
 		height: 160px;
 		float: left;
 		margin: 0 25px 25px 0;
@@ -87,14 +93,18 @@
 	}
 
 	.traslation-feild-item{
-		width: 285px;
+		/*transition: all 0.75s ease-in-out;*/
+		width: 195px;
 		height: 160px;
 		float: left;
 		margin: 0 25px 25px 0;
 		overflow: hidden;
 
-
+		input[disabled]{
+			font-weight: bold;
+		}
 		.btn-icon{
+			transition: all 0s;
 			&:hover{
 				font-size: 19px;
 			}

@@ -111,9 +111,10 @@
                     }, 
                     config
                 ).then(function(res){
-                    console.log(res);
+                    
 
-                    var doc = document.getElementById('returnResult').contentWindow.document;
+                    var ifm = document.getElementById('returnResult');
+                    var doc = ifm.contentWindow.document;
                     doc.open();
 
                     var cssHtml = '<style type="text/css">@media print{body{ background-color:#FFFFFF; background-image:none; color:#000000 }#ad{ display:none;}#leftbar{ display:none;}#contentarea{ width:100%;}}</style>';
@@ -122,10 +123,19 @@
                     doc.write( cssHtml +res.data);
                     doc.close();
 
+                    
+
+                    // resize the height of ifram
+                    setTimeout(function(){
+                        //console.log(document.getElementById('returnResult').contentWindow.document.body.offsetHeight);    
+                        ifm.height = ifm.contentWindow.document.body.scrollHeight + 100 + 'px';
+                    },100);
+                    
+
                     $scope.loading = false;  
                     $scope.successed = true; 
+                    
 
-                    //$scope.result = res.data;  
                 },function(err){
                     $scope.loading = false;  
                     $scope.successed = false; 
@@ -181,8 +191,10 @@
 
         // add pending item 
         $scope.addPendingItem = function(){
+            console.log($scope.selectedLanguage['code']);
+            var code = $scope.selectedLanguage['code'];
             $scope.pendingItemList.push({
-                language : $scope.selectedLanguage.code,
+                language : code,
                 pattern : '',
                 text : '',
                 length : 0
@@ -191,7 +203,6 @@
 
         // remove pending item
         $scope.removePendingItem = function(removeItem){
-            
             $scope.pendingItemList = $scope.pendingItemList.filter(function(obj) {
                 return obj !== removeItem;
             });
@@ -199,11 +210,11 @@
 
         // save pending item
         $scope.savePendingItem = function(saveItem){
-            
+            console.log(saveItem);
             TranslationService.CreateTranslationFeild(saveItem,function(response, err){
 
                     if(response.status == 200){
-
+                        saveItem._id = response.data._id;
                         $scope.addItem(saveItem);
                         $scope.removePendingItem(saveItem);
                     }else{
@@ -225,6 +236,26 @@
         $scope.addItem = function(newItem){
             $scope.itemList.push(newItem);
         };
+
+        $scope.removeItemFromExistingList = function(removeItem){
+            $scope.itemList = $scope.itemList.filter(function(obj) {
+                return obj !== removeItem;
+            });
+        };
+
+        // remove existing item
+        $scope.removeItem = function(removeItem){
+            TranslationService.DeleteTranslationFeilds(removeItem._id,function(response, err){
+
+                    if(response.status == 200){
+                        $scope.removeItemFromExistingList(removeItem);
+                    }else{
+                        console.log(err);
+                    }
+                    
+                }
+            );
+        };        
 
 
         // is item in edit mode

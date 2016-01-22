@@ -61,11 +61,11 @@
 		                	</div>
 
 
-		                	<div ng-repeat="item in pendingItemList" class="panel panel-default ui-ribbon-container ui-ribbon-warn traslation-feild-item">
+		                	<div ng-repeat="item in pendingItemList track by $index" class="panel panel-default ui-ribbon-container ui-ribbon-warn traslation-feild-item">
 		                		<div >
 		                			<div class="ui-ribbon-wrapper">
 		                				<div class="ui-ribbon">
-		                					New
+		                					New {{$index + 1}}
 		                				</div>
 		                			</div>
 		                			<div class="panel-heading">
@@ -95,9 +95,9 @@
 	                                </div>
 	                                <div class="panel-heading">
 	                                	<a ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-tumblr ui-wave"><i class="zmdi zmdi-plus-square"></i></a>
-	                                	<a ng-click="changeToItemEditMode(item)" ng-show="!isItemEditMode(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-edit"></i></a>
-	                                	<a ng-click="changeToItemViewMode(item)" ng-show="isItemEditMode(item)"  ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-long-arrow-return"></i></a>
-	                                	<a ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-pinterest ui-wave"><i class="zmdi zmdi-delete"></i></a>
+	                                	<a ng-click="changeToItemEditMode(item)" ng-if="!isItemEditMode(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-edit"></i></a>
+	                                	<a ng-click="changeToItemViewMode(item)" ng-if="isItemEditMode(item)"  ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-long-arrow-return"></i></a>
+	                                	<a ng-click="removeItem(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-pinterest ui-wave"><i class="zmdi zmdi-delete"></i></a>
 	                                </div>
 	                                <div class="panel-body">
 	                                    <md-input-container flex>
