@@ -1,25 +1,46 @@
 
 
 <div class="page ng-scope" ng-controller="TranslateManagementCtrl">
+	
+	<!-- <div class="row ui-section"></div> -->
+	
 	<div class="row ui-section">
 		<div class="col-lg-8 clearfix">
-	        <h2 class="section-header">Material Loader</h2>
+	        <h2 class="section-header">Translation Feild Management</h2>
 	    </div>
 		<div class="col-md-12">
 
 			<section class="panel panel-default">
-				<div class="panel-body">
+				<div class="panel-body center">
+					<div class="center-containor">
+						<md-input-container flex>
+						    <label>Select Translate Language</label>
+						    <md-select ng-model="selectedLanguage" style="min-width: 170px">
+						        <md-option ng-repeat="language in languages" value="{{language}}">
+						            {{language.desc}}
+						        </md-option>
+						    </md-select>
+						</md-input-container>
 
+						<md-input-container flex>
+						    <label>Sort Type</label>
+						    <md-select ng-model="selectedSortType" style="min-width: 170px">
+						        <md-option ng-repeat="type in sortTypes" value="{{type}}">
+						            {{type}}
+						        </md-option>
+						    </md-select>
+						</md-input-container>
 
-					 <md-input-container flex>
-					    <label>Select Language</label>
-					    <md-select ng-model="user.state" style="min-width: 150px">
-					        <md-option ng-repeat="state in states" value="{{state.code}}">
-					            {{state.desc}}
-					        </md-option>
-					    </md-select>
-					</md-input-container>
-
+						<md-input-container flex>
+						    <label>Sort Order</label>
+						    <md-select ng-model="selectedSortOrder" style="min-width: 170px">
+						        <md-option ng-repeat="order in sortOrders" value="{{order}}">
+						            {{order}}
+						        </md-option>
+						    </md-select>
+						</md-input-container>
+			
+					</div>
 
 				</div>
 			</section>
@@ -35,100 +56,65 @@
 		                </div>
 		                <div class="panel-body traslation-panel" >
 
+		                	<div class="add-item" ng-click="addPendingItem()">
+		                		<i class="zmdi zmdi-plus"></i>
+		                	</div>
 
-							<div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
-	                                <div class="ui-ribbon-wrapper">
-	                                    <div class="ui-ribbon">
-	                                        中文
-	                                    </div>
-	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
-	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
-	                                </div>
-								</div>
-                            </div>
 
-                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
+		                	<div ng-repeat="item in pendingItemList" class="panel panel-default ui-ribbon-container ui-ribbon-warn traslation-feild-item">
+		                		<div >
+		                			<div class="ui-ribbon-wrapper">
+		                				<div class="ui-ribbon">
+		                					New
+		                				</div>
+		                			</div>
+		                			<div class="panel-heading">
+		                				<a ng-click="savePendingItem(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-tumblr ui-wave"><i class="zmdi zmdi-plus-square"></i></a>
+		                				<a ng-click="removePendingItem(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-pinterest ui-wave"><i class="zmdi zmdi-delete"></i></a>
+		                			</div>
+		                			<div class="panel-body">
+		                				<md-input-container flex>
+		                				<label>Text</label>
+		                				<input ng-model="item.pattern">
+			                			</md-input-container>
+
+			                			<md-input-container flex>
+			                			<label>Translation</label>
+			                			<input ng-model="item.text">
+				                		</md-input-container>
+				                	</div>
+				                </div>
+				            </div>
+
+							<div ng-repeat="item in itemList" class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
+								<div ng-cloak>
 	                                <div class="ui-ribbon-wrapper">
 	                                    <div class="ui-ribbon">
 	                                        中文
 	                                    </div>
 	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
+	                                <div class="panel-heading">
+	                                	<a ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-tumblr ui-wave"><i class="zmdi zmdi-plus-square"></i></a>
+	                                	<a ng-click="changeToItemEditMode(item)" ng-show="!isItemEditMode(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-edit"></i></a>
+	                                	<a ng-click="changeToItemViewMode(item)" ng-show="isItemEditMode(item)"  ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-long-arrow-return"></i></a>
+	                                	<a ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-pinterest ui-wave"><i class="zmdi zmdi-delete"></i></a>
+	                                </div>
 	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
-	                                </div>
-								</div>
-                            </div>
-                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
-	                                <div class="ui-ribbon-wrapper">
-	                                    <div class="ui-ribbon">
-	                                        中文
-	                                    </div>
-	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
-	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
-	                                </div>
-								</div>
-                            </div>
-                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
-	                                <div class="ui-ribbon-wrapper">
-	                                    <div class="ui-ribbon">
-	                                        中文
-	                                    </div>
-	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
-	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
-	                                </div>
-								</div>
-                            </div>
-                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
-	                                <div class="ui-ribbon-wrapper">
-	                                    <div class="ui-ribbon">
-	                                        中文
-	                                    </div>
-	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
-	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
-	                                </div>
-								</div>
-                            </div>
-                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
-	                                <div class="ui-ribbon-wrapper">
-	                                    <div class="ui-ribbon">
-	                                        中文
-	                                    </div>
-	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
-	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
-	                                </div>
-								</div>
-                            </div>
-                            <div class="panel panel-default ui-ribbon-container ui-ribbon-success traslation-feild-item">
-								<div >
-	                                <div class="ui-ribbon-wrapper">
-	                                    <div class="ui-ribbon">
-	                                        中文
-	                                    </div>
-	                                </div>
-	                                <div class="panel-heading">Ribbon-success</div>
-	                                <div class="panel-body">
-	                                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Deleniti rerum reprehenderit ipsam natus saepe. Recusandae, itaque nulla in illum dolorum ea eveniet quaerat ipsa placeat magni commodi obcaecati mollitia necessitatibus?</p>
+	                                    <md-input-container flex>
+		                				<label>Text</label>
+		                				<input ng-model="item.pattern" ng-disabled="!isItemEditMode(item)">
+			                			</md-input-container>
+
+			                			<md-input-container flex>
+			                			<label>Translation</label>
+			                			<input ng-model="item.text" ng-disabled="!isItemEditMode(item)">
+				                		</md-input-container>
 	                                </div>
 								</div>
                             </div>
 
+                         
+                            
 
 		                </div>
 		            </div>

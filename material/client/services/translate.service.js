@@ -25,6 +25,23 @@ service.factory('TranslationService', ['$http', function($http) {
             });
 
 			return data;
+		},
+
+		GetTranslationFeilds : function(successCallback, errCallback ) {
+            
+            var baseLink= 'http://localhost:1000/api/translate';
+
+            $http({
+				method: 'GET',
+				url: baseLink
+			}).then(function(response) {
+				successCallback(response);
+			}, function(response) {
+				if(typeof errorCallback !== 'undefined')
+					errCallback( response);
+			});
+
+
 		}
 
 

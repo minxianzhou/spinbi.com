@@ -138,26 +138,158 @@
 
     app.controller('TranslateManagementCtrl', ['$scope', '$filter' , '$http', '$mdToast','TranslationService', TranslateManagementCtrl]);
     function TranslateManagementCtrl($scope, $filter, $http, $mdToast, TranslationService) {
-        $scope.states = [
+
+
+        $scope.languages = [
             {
-                code: 'CA',
-                desc: "Canada"
+                code: 'zh',
+                desc: "中文"
             },
             {
-                code: 'US',
-                desc: "Unite State"
+                code: 'ru',
+                desc: "Русский язык"
             },
             {
-                code: 'ZH',
-                desc: "China"
+                code: 'pt',
+                desc: "Portugal"
+            },
+            {
+                code: 'es',
+                desc: "Español"
+            },
+            {
+                code: 'ja',
+                desc: "日本語"
             }
         ];
+
+        $scope.sortTypes = [ 'Date', 'Alphabet', 'Length' ];
+        $scope.sortOrders = [ 'ASE', 'DESC' ];
+
+        $scope.selectedLanguage = $scope.languages[0];
+        $scope.selectedSortType= $scope.sortTypes[0];
+        $scope.selectedSortOrder = $scope.sortOrders[0];
+
+
+
+        $scope.pendingItemList = [];
+        $scope.itemList = [];
+
+        //--------------------------------------
+        // new item control
+        //--------------------------------------
+
+        // add pending item 
+        $scope.addPendingItem = function(){
+            $scope.pendingItemList.push({
+                language : $scope.selectedLanguage.code,
+                pattern : '',
+                text : '',
+                length : 0
+            });
+        };
+
+        // remove pending item
+        $scope.removePendingItem = function(removeItem){
+            
+            $scope.pendingItemList = $scope.pendingItemList.filter(function(obj) {
+                return obj !== removeItem;
+            });
+        };
+
+        // save pending item
+        $scope.savePendingItem = function(saveItem){
+            
+            TranslationService.CreateTranslationFeild(saveItem,function(response, err){
+
+                    if(response.status == 200){
+
+                        $scope.addItem(saveItem);
+                        $scope.removePendingItem(saveItem);
+                    }else{
+                        console.log(err);
+                    }
+                    
+                }
+            );  
+
+        };
+
+
+        //--------------------------------------
+        // existing item control
+        //--------------------------------------
+
+
+        // add new item into list
+        $scope.addItem = function(newItem){
+            $scope.itemList.push(newItem);
+        };
+
+
+        // is item in edit mode
+        $scope.isItemEditMode = function(item){
+            if(typeof item.editMode === 'undefined' || item.editMode == false)
+                return false
+            else
+                return true;
+        };
+
+        $scope.changeToItemEditMode = function(item){
+            item.editMode = true;
+        };
+        $scope.changeToItemViewMode = function(item){
+            item.editMode = false;
+        };
+
+
+        var init = function(){
+
+            TranslationService.GetTranslationFeilds(function(res){
+                console.log(res);
+                $scope.itemList = res.data;
+            });
+
+        };
+
+
+        init();
+
+
     }
 
-
-
-
-
-
-
 })(); 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

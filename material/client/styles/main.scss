@@ -55,15 +55,67 @@
 	margin: 0 auto;
 }
 
+
+
 .traslation-panel{
-	max-height: 500px;
+	max-height: 560px;
 	overflow-y:auto;
+	transition: all 0.75s ease-in-out;
+
+	.add-item{
+		width: 285px;
+		height: 160px;
+		float: left;
+		margin: 0 25px 25px 0;
+		overflow: hidden;
+		border: 1px solid rgb(226, 237, 235);
+		background-color: #F3EFEF;
+		text-align: center;
+
+		color: #D8C4C4;
+		font-size: 80px;
+		line-height: 160px;
+
+		transition: all 0.25s ease-in-out;
+
+		&:hover{
+			font-size: 100px;
+			cursor: pointer;
+			background-color: #375251;
+			color: #CCD7DC;
+		}
+	}
+
+	.traslation-feild-item{
+		width: 285px;
+		height: 160px;
+		float: left;
+		margin: 0 25px 25px 0;
+		overflow: hidden;
+
+
+		.btn-icon{
+			&:hover{
+				font-size: 19px;
+			}
+			
+		}
+		
+		md-input-container{
+			margin: -4px 0!important;
+		}
+		
+	}
+
 }
 
-.traslation-feild-item{
-	width: 285px;
-	height: 150px;
-	float: left;
-	margin: 0 25px 25px 0;
-	overflow: hidden;
+
+
+.center-containor{
+	display: inline-block;
+	margin: 0 auto;
+
+	md-select{
+		margin-right: 40px;
+	}
 }
