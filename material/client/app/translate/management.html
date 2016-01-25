@@ -45,7 +45,7 @@
 							<label for="input_link">Search Pattern</label>
 							<input ng-model="searchPattern" style="width: 170px" class="ng-pristine ng-valid md-input ng-touched" id="input_link"  aria-invalid="false" style="" ng-disabled="loading||successed"><div class="md-errors-spacer"></div>
 						</md-input-container>
-
+						<md-switch style="width: 170px" ng-model="deleteMode" aria-label="Warn" class="md-warn"> Delete Mode </md-switch>
 						
 					</div>
 
@@ -59,8 +59,8 @@
 
 		            <div class="panel panel-default">
 		                <div class="panel-heading">
-		                    <h3 class="panel-title ">Translation Feilds</h3>
-		                    <md-switch ng-model="switchData.color3" aria-label="Warn" class="md-warn"> Delete Enable </md-switch>
+		                    <h3 class="panel-title ">Translation Feilds <span class="badge">{{itemList.length}}</span></h3>
+		                    <!-- <md-switch ng-model="switchData.color3" aria-label="Warn" class="md-warn"> Delete Enable </md-switch> -->
 		                </div>
 		                <div class="panel-body traslation-panel" >
 
@@ -104,7 +104,7 @@
 	                                <div class="panel-heading">
 	                                	<a ng-click="changeToItemEditMode(item)" ng-if="!isItemEditMode(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="zmdi zmdi-edit"></i></a>
 	                                	<a ng-click="changeToItemViewMode(item)" ng-if="isItemEditMode(item)"  ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-linkedin ui-wave"><i class="fa fa-floppy-o"></i></a>
-	                                	<a ng-click="removeItem(item)" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-pinterest ui-wave"><i class="zmdi zmdi-delete"></i></a>
+	                                	<a ng-click="removeItem(item)" ng-if="deleteMode" ui-wave="" href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-pinterest ui-wave"><i class="zmdi zmdi-delete"></i></a>
 	                                </div>
 	                                <div class="panel-body">
 	                                    <md-input-container flex>

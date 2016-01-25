@@ -93,6 +93,9 @@
                 //     position: $scope.getToastPosition()
                 // });    
                 return false;    
+            }else if( $scope.link.indexOf('v3.torontomls.net') == -1 ){
+                alert('wrong url');
+                return false;
             }
 
             var baseLink= 'http://localhost:1000/api/content';
@@ -214,6 +217,13 @@
 
 
 
+        $scope.deleteMode = false;
+        $scope.changeDeleteMode = function(){
+            if($scope.deleteMode == false)
+                $scope.deleteMode = true;
+            else
+                $scope.deleteMode = false;
+        }
 
         $scope.selectedLanguage = $scope.languages[0].code;
         $scope.selectedSortType= $scope.sortTypes[0];
