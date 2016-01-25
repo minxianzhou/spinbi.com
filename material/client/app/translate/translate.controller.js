@@ -113,6 +113,8 @@
                 ).then(function(res){
                     
 
+                    console.log(res);
+
                     var ifm = document.getElementById('returnResult');
                     var doc = ifm.contentWindow.document;
                     doc.open();
@@ -174,9 +176,46 @@
         ];
 
         $scope.sortTypes = [ 'Date', 'Alphabet', 'Length' ];
-        $scope.sortOrders = [ 'ASE', 'DESC' ];
+        $scope.sortOrders = [ 'ASC', 'DESC' ];
+         
+        $scope.searchPattern = '';
 
-        $scope.selectedLanguage = $scope.languages[0];
+
+
+
+        $scope.getSortString = function(){
+            var query = '';
+
+            // choose filter
+            if($scope.selectedSortType == 'Date'){ query += 'date' }
+            else if($scope.selectedSortType == 'Alphabet'){ query += 'pattern' }
+            else if($scope.selectedSortType == 'Length'){ query += 'length' }
+            else { query += 'Date' }
+
+            // choose sort order
+            if($scope.selectedSortOrder == 'DESC'){ query = '-' + query; }
+   
+
+            return query;
+        };
+
+        $scope.getFilterString = function(){
+            var condition =  {
+                language : $scope.selectedLanguage
+            };
+
+            if($scope.searchPattern != '')
+                condition.pattern = $scope.searchPattern;
+            
+   
+
+            return condition;
+        };
+
+
+
+
+        $scope.selectedLanguage = $scope.languages[0].code;
         $scope.selectedSortType= $scope.sortTypes[0];
         $scope.selectedSortOrder = $scope.sortOrders[0];
 
@@ -191,13 +230,13 @@
 
         // add pending item 
         $scope.addPendingItem = function(){
-            console.log($scope.selectedLanguage['code']);
-            var code = $scope.selectedLanguage['code'];
+            
             $scope.pendingItemList.push({
-                language : code,
+                language : $scope.selectedLanguage,
                 pattern : '',
                 text : '',
-                length : 0
+                length : 0,
+                date : new Date().toISOString()
             });
         };
 
@@ -210,19 +249,24 @@
 
         // save pending item
         $scope.savePendingItem = function(saveItem){
-            console.log(saveItem);
-            TranslationService.CreateTranslationFeild(saveItem,function(response, err){
 
-                    if(response.status == 200){
-                        saveItem._id = response.data._id;
-                        $scope.addItem(saveItem);
-                        $scope.removePendingItem(saveItem);
-                    }else{
-                        console.log(err);
+            if( saveItem.pattern == '' || saveItem.text == ''){
+
+            }else{
+                TranslationService.CreateTranslationFeild(saveItem,function(response, err){
+
+                        if(response.status == 200){
+                            saveItem._id = response.data._id;
+                            saveItem.length = response.data.length;
+                            $scope.addItem(saveItem);
+                            $scope.removePendingItem(saveItem);
+                        }else{
+                            console.log(err);
+                        }
                     }
-                    
-                }
-            );  
+                );          
+            }         
+
 
         };
 
@@ -246,16 +290,30 @@
         // remove existing item
         $scope.removeItem = function(removeItem){
             TranslationService.DeleteTranslationFeilds(removeItem._id,function(response, err){
-
                     if(response.status == 200){
                         $scope.removeItemFromExistingList(removeItem);
+                    }else{
+                        console.log(err);
+                    }
+                }
+            );
+        };        
+
+
+        // update existing item
+        $scope.updateItem = function(updateItem){
+            TranslationService.UpdateTranslationFeilds(updateItem,function(response, err){
+
+                    if(response.status == 200){
+                        //$scope.removeItemFromExistingList(removeItem);
                     }else{
                         console.log(err);
                     }
                     
                 }
             );
-        };        
+        }; 
+
 
 
         // is item in edit mode
@@ -269,15 +327,16 @@
         $scope.changeToItemEditMode = function(item){
             item.editMode = true;
         };
+
         $scope.changeToItemViewMode = function(item){
             item.editMode = false;
+            $scope.updateItem(item);
         };
 
 
         var init = function(){
 
             TranslationService.GetTranslationFeilds(function(res){
-                console.log(res);
                 $scope.itemList = res.data;
             });
 

@@ -46,6 +46,8 @@
 .app > .main-container {
 	min-height: 97%;
 }
+
+
 .display-iframe{
 	color: red;
 	border: 0;
@@ -63,61 +65,82 @@
 
 
 
-.traslation-panel{
-	max-height: 560px;
-	overflow-y:auto;
-	transition: all 0.75s ease-in-out;
 
-	.add-item{
-		width: 195px;
-		height: 160px;
-		float: left;
-		margin: 0 25px 25px 0;
-		overflow: hidden;
-		border: 1px solid rgb(226, 237, 235);
-		background-color: #F3EFEF;
-		text-align: center;
+#translation-management{
 
-		color: #D8C4C4;
-		font-size: 80px;
-		line-height: 160px;
+	.heading{ margin-bottom: 50px; }
 
-		transition: all 0.25s ease-in-out;
-
-		&:hover{
-			font-size: 100px;
-			cursor: pointer;
-			background-color: #375251;
-			color: #CCD7DC;
-		}
+	.display-filter{
+		
 	}
 
-	.traslation-feild-item{
-		/*transition: all 0.75s ease-in-out;*/
-		width: 195px;
-		height: 160px;
-		float: left;
-		margin: 0 25px 25px 0;
-		overflow: hidden;
+	
+	.traslation-panel{
+		max-height: 560px;
+		overflow-y:auto;
+		transition: all 0.75s ease-in-out;
 
-		input[disabled]{
-			font-weight: bold;
+
+		.cap{
+			 text-transform: uppercase;
 		}
-		.btn-icon{
-			transition: all 0s;
+
+
+		.add-item{
+			width: 195px;
+			height: 160px;
+			float: left;
+			margin: 0 25px 25px 0;
+			overflow: hidden;
+			border: 1px solid rgb(226, 237, 235);
+			background-color: #F3EFEF;
+			text-align: center;
+
+			color: #D8C4C4;
+			font-size: 80px;
+			line-height: 160px;
+
+			transition: all 0.25s ease-in-out;
+
 			&:hover{
-				font-size: 19px;
+				font-size: 100px;
+				cursor: pointer;
+				background-color: #375251;
+				color: #CCD7DC;
+			}
+		}
+
+		.traslation-feild-item{
+			/*transition: all 0.75s ease-in-out;*/
+			width: 195px;
+			height: 160px;
+			float: left;
+			margin: 0 25px 25px 0;
+			overflow: hidden;
+
+			input[disabled]{
+				font-weight: bold;
+			}
+			.btn-icon{
+				transition: all 0s;
+				&:hover{
+					font-size: 19px;
+				}
+				
+			}
+			
+			md-input-container{
+				margin: -4px 0!important;
 			}
 			
 		}
-		
-		md-input-container{
-			margin: -4px 0!important;
-		}
-		
-	}
 
+	}
 }
+
+
+
+
 
 
 

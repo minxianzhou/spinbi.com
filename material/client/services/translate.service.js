@@ -62,7 +62,34 @@ service.factory('TranslationService', ['$http', function($http) {
 
 
 
+    },
+
+    UpdateTranslationFeilds : function(data, successCallback, errCallback ) {
+       
+      var baseLink= 'http://localhost:1000/api/translate';
+
+      $http.put(
+          baseLink,
+          data
+      ).then(function(res){
+         successCallback(res);
+
+         if(typeof errCallback !== 'undefined')
+            errCallback(null);
+      },function(err){
+        if(typeof errCallback !== 'undefined')
+            errCallback(err);
+      });
+
+
+
     }
+
+
+
+
+
+
 
 
   }
