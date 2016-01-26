@@ -1,7 +1,9 @@
 {
-    "CONTACTS": "客户联系",
+    "CONTACTS": "联系人",
     "CREATE_USER": "创建用户",
     "SEARCH_USER": "查找用户",
+    "CREATE_CONTACT": "创建联系人",
+    "SEARCH_CONTACT": "查找联系人",
     "TANSLATE": "翻译",
     "TANSLATION_MANAGEMENT": "翻译管理",
     "MANAGEMENT": "管理",
