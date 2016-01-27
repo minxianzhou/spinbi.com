@@ -5,9 +5,10 @@
     "CREATE_CONTACT": "Create Contact",
     "SEARCH_CONTACT": "Search Contact",
     "TANSLATE": "Tanslate",
-    "TANSLATION_MANAGEMENT": "Tanslation Managment",
+    "TANSLATION": "Tanslation",
     "MANAGEMENT": "Managment",
     "BACKEND_ADMIN": "Backend Admin",
+    "USER": "User",
 
 
     "JOHN_DOE": "John Doe",

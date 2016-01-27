@@ -5,9 +5,10 @@
     "CREATE_CONTACT": "创建联系人",
     "SEARCH_CONTACT": "查找联系人",
     "TANSLATE": "翻译",
-    "TANSLATION_MANAGEMENT": "翻译管理",
+    "TANSLATION": "翻译",
     "MANAGEMENT": "管理",
     "BACKEND_ADMIN": "后台管理",
+    "USER": "用户",
 
 
     "JOHN_Doe": "李四",
