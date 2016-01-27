@@ -3,7 +3,7 @@
 
     var app = angular.module('app.user',['app.services']);
 
-
+    // app.directive('customPage', customPage);
 
     app.controller('UserCtrl', ['$scope', '$filter' , '$http', '$uibModal', UserCtrl]);
 
