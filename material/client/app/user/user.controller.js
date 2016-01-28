@@ -3,16 +3,21 @@
 
     var app = angular.module('app.user',['app.services']);
 
-    // app.directive('customPage', customPage);
 
-    app.controller('UserCtrl', ['$scope', '$filter' , '$http', '$uibModal', UserCtrl]);
+    app.controller('UserCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'AccountService', UserCtrl]);
 
 
-    function UserCtrl($scope, $filter, $http, $uibModal) {
+    function UserCtrl($scope, $filter, $http, $uibModal,AccountService) {
 
 
         $scope.userList = [];
 
+        var init = function(){
+            AccountService.GetAllUsers({}, function(err,result){
+                console.log(result);
+                $scope.userList = result.data;
+            });
+        };
 
         $scope.createUser = function () {
 
@@ -39,7 +44,7 @@
 
 
 
-
+        init();
     }
 
     function ModalCreateUserInstanceCtrl($scope, $uibModalInstance, items) {

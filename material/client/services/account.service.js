@@ -1,14 +1,14 @@
 'use strict';
 
-var service = angular.module('app.services', []);
+var services = angular.module('app.services');
 
-service.factory('AccountService', ['$http', function($http) {
+services.factory('AccountService', ['$http','appConfig', function($http, appConfig) {
   return {
 
 
 		CreateUser : function(data, successCallback, errCallback ) {
           
-      var baseLink= 'http://localhost:1000/api/translate';
+      var baseLink= appConfig.setting.apiBaseLink + 'user';
 
       $http.post(
           baseLink, 
@@ -24,8 +24,25 @@ service.factory('AccountService', ['$http', function($http) {
          		errCallback(err);
       });
 
-			return data;
-		}
+			//return data;
+		},
+
+    GetAllUsers : function(data, callback ) {
+          
+      var baseLink= appConfig.setting.apiBaseLink + 'user';
+
+      $http({
+        method: 'GET',
+        url: baseLink
+      }).then(function(response) {
+        callback(null, response);
+      }, function(response) {
+        callback( response);
+      });
+
+
+      //return data;
+    }  
 
 
 

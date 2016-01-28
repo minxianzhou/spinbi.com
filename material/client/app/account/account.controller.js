@@ -5,16 +5,33 @@
 
     // app.directive('customPage', customPage);
 
-    app.controller('SignUpCtrl', ['$scope', '$filter' , '$http', '$uibModal', SignUpCtrl]);
+    app.controller('SignUpCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'AccountService', SignUpCtrl]);
 
 
-    function SignUpCtrl($scope, $filter, $http, $uibModal) {
+    function SignUpCtrl($scope, $filter, $http, $uibModal, AccountService) {
 
+    	
 
-        $scope.username = '';
-        $scope.password = '';
+        $scope.firstName = '';
+        $scope.lastName = '';
         $scope.email = '';
+		$scope.password = '';
 
+
+		$scope.signup = function(){
+			AccountService.CreateUser({
+	        	firstName:$scope.firstName ,
+	        	lastName:$scope.lastName ,
+	        	password:$scope.password ,
+	        	email:$scope.email
+	        }, function success(result){
+	        	console.log(result);
+	        }, function error(err){
+	        	console.log(err);
+	        });	
+		}
+
+        
 
 
 

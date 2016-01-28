@@ -45,10 +45,15 @@
             gray:       '#EDF0F1'
         };
 
+        var setting = {
+            apiBaseLink : 'http://localhost:1000/api/'
+        };
+
         return {
             pageTransitionOpts: pageTransitionOpts,
             main: main,
-            color: color
+            color: color,
+            setting: setting
         }
     }
 

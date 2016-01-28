@@ -2,7 +2,7 @@
 
 var service = angular.module('app.services', []);
 
-service.factory('TranslationService', ['$http', function($http) {
+service.factory('TranslationService', ['$http','appConfig', function($http,appConfig) {
   return {
 
 
@@ -28,8 +28,8 @@ service.factory('TranslationService', ['$http', function($http) {
 		},
 
 		GetTranslationFeilds : function(successCallback, errCallback ) {
-            
-      var baseLink= 'http://localhost:1000/api/translate';
+
+      var baseLink= appConfig.setting.apiBaseLink +'translate';
 
       $http({
         method: 'GET',
@@ -46,7 +46,7 @@ service.factory('TranslationService', ['$http', function($http) {
 
     DeleteTranslationFeilds : function(deleteId, successCallback, errCallback ) {
        
-      var baseLink= 'http://localhost:1000/api/translate?_id=' + deleteId;
+      var baseLink= baseLink= appConfig.setting.apiBaseLink + 'translate?_id=' + deleteId;
 
       $http.delete(
           baseLink
@@ -66,7 +66,7 @@ service.factory('TranslationService', ['$http', function($http) {
 
     UpdateTranslationFeilds : function(data, successCallback, errCallback ) {
        
-      var baseLink= 'http://localhost:1000/api/translate';
+      var baseLink= appConfig.setting.apiBaseLink +'translate';
 
       $http.put(
           baseLink,

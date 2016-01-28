@@ -25,9 +25,16 @@
                             <fieldset>
                                 <div class="form-group">
                                     <div class="ui-input-group">        
-                                        <input type="text" required class="form-control" ng-model="username">
+                                        <input type="text" required class="form-control" ng-model="firstName">
                                         <span class="input-bar"></span>
-                                        <label>Username</label>
+                                        <label>First Name</label>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <div class="ui-input-group">        
+                                        <input type="text" required class="form-control" ng-model="lastName">
+                                        <span class="input-bar"></span>
+                                        <label>Last Name</label>
                                     </div>
                                 </div>
                                 <div class="form-group">
@@ -53,7 +60,7 @@
                     </div>
                     <div class="card-action no-border text-right">
                         <a href="#/account/signin">Login</a>
-                        <a href="#/" class="color-primary">Sign Up</a>
+                        <a  class="color-primary" ng-click="signup()">Sign Up</a>
                     </div>
                 </div> 
 
