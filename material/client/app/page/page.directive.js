@@ -24,7 +24,10 @@
             addBg = function(path) {
                 $element.removeClass('body-wide body-err body-lock body-auth');
                 switch (path) {
-                    case '/user/user':
+              
+                    case '/home':
+                    case '/account/signup':
+                    case '/account/signin':
                         return $element.addClass('body-wide');
                     case '/404':
                     case '/page/404':

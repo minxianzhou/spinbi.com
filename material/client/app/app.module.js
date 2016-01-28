@@ -16,6 +16,7 @@
         // custom controllers
         ,'app.translate'
         ,'app.user'
+        ,'app.account'
 
         // Custome service
         ,'app.services'

@@ -6,6 +6,7 @@
             var routes, setRoutes;
 
             routes = [
+                'home', 'account/signup','account/signin',
                 'ui/cards', 'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/timeline', 'ui/lists', 'ui/pricing-tables',
                 'map/maps',
                 'table/static', 'table/dynamic', 'table/responsive',
@@ -41,6 +42,8 @@
                 templateUrl: 'app/dashboard/dashboard.html'
             });
 
+
+       
 
 
             //$locationProvider.html5Mode(true);
