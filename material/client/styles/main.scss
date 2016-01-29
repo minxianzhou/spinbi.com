@@ -1,0 +1,159 @@
+
+// Shared variables and mixins
+@import 
+    "global/var"                        // global variables
+,   "global/var-extra"                  // extra global variables
+,   "bootstrap/bootstrap/mixins"        // Bootstrap mixins
+,   "bourbon/bourbon"                   // mixins
+;
+
+
+@import 
+    "global/shared"
+    
+// Plugins, overrides plugins' style
+,   "plugins/angular-bootstrap"
+,   "plugins/angular-material"
+,   "plugins/angular-ui-tree"
+,   "plugins/responsive-tables"
+,   "plugins/jquery-steps"
+
+// Pages
+,   "global/var-pages"
+,   "pages/dashboard"
+,   "pages/pages"
+,   "pages/error"
+,   "pages/auth"
+,   "pages/profile"
+,   "pages/invoice"
+,   "pages/ui"
+,   "pages/features"
+,   "pages/demo"
+,   "pages/demo-material"
+
+// sections
+,   "layout/layouts"
+,   "layout/nav"
+,   "layout/nav-off-canvas"
+,   "layout/nav-horizontal"
+,   "layout/nav-min"
+,   "layout/nav-color"
+,   "layout/header"
+,   "layout/body"
+;
+
+
+.app > .main-container {
+	min-height: 97%;
+}
+
+
+.display-iframe{
+	color: red;
+	border: 0;
+	width: 100%;
+	/*min-height: 705px;*/
+	/*height: 100%;*/
+
+	background-color: gray;
+}
+
+.center{
+	text-align: center;
+	margin: 0 auto;
+}
+
+
+
+
+#translation-management{
+
+	.heading{ margin-bottom: 50px; }
+
+	.display-filter{
+		
+	}
+
+	
+	.traslation-panel{
+		max-height: 560px;
+		overflow-y:auto;
+		transition: all 0.75s ease-in-out;
+
+
+		.cap{
+			 text-transform: uppercase;
+		}
+
+
+		.add-item{
+			width: 195px;
+			height: 160px;
+			float: left;
+			margin: 0 25px 25px 0;
+			overflow: hidden;
+			border: 1px solid rgb(226, 237, 235);
+			background-color: #F3EFEF;
+			text-align: center;
+
+			color: #D8C4C4;
+			font-size: 80px;
+			line-height: 160px;
+
+			transition: all 0.25s ease-in-out;
+
+			&:hover{
+				font-size: 100px;
+				cursor: pointer;
+				background-color: #375251;
+				color: #CCD7DC;
+			}
+		}
+
+		.traslation-feild-item{
+			/*transition: all 0.75s ease-in-out;*/
+			width: 195px;
+			height: 160px;
+			float: left;
+			margin: 0 25px 25px 0;
+			overflow: hidden;
+
+			input[disabled]{
+				font-weight: bold;
+			}
+			.btn-icon{
+				transition: all 0s;
+				&:hover{
+					font-size: 19px;
+				}
+				
+			}
+			
+			md-input-container{
+				margin: -4px 0!important;
+			}
+			
+		}
+
+	}
+}
+
+
+
+
+.top-nav{
+	height: 80px;
+	background-color: white;
+	    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+}
+
+
+
+.center-containor{
+	display: inline-block;
+	margin: 0 auto;
+
+	md-select{
+		margin-right: 40px;
+	}
+}
