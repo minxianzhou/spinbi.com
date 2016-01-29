@@ -8,7 +8,7 @@ service.factory('TranslationService', ['$http','appConfig', function($http,appCo
 
 		CreateTranslationFeild : function(data, successCallback, errCallback ) {
           
-      var baseLink= 'http://localhost:1000/api/translate';
+      var baseLink= appConfig.setting.apiBaseLink +'translate';
 
       $http.post(
           baseLink, 

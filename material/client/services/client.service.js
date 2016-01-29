@@ -7,8 +7,9 @@ services.factory('ClientService', ['$http', function($http) {
 
 
 		ClientService : function(data, successCallback, errCallback ) {
-          
-      var baseLink= 'http://localhost:1000/api/translate';
+      
+      var baseLink= appConfig.setting.apiBaseLink +'client';    
+
 
       $http.post(
           baseLink, 

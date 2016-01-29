@@ -58,6 +58,15 @@
                     data-ng-click=" order('-price') "
                     data-ng-class="{active: row == '-price'}"></span>
                 </div></th>
+                <th><div class="th">
+                Phone
+                <span class="fa fa-angle-up"
+                    data-ng-click=" order('price') "
+                    data-ng-class="{active: row == 'price'}"></span>
+                <span class="fa fa-angle-down"
+                    data-ng-click=" order('-price') "
+                    data-ng-class="{active: row == '-price'}"></span>
+                </div></th>
                 
             </tr>
             </thead>
@@ -65,6 +74,7 @@
             <tr data-ng-repeat="user in userList">
                 <td>{{user.firstName + ' ' + user.lastName}}</td>
                 <td>{{user.email}}</td>
+                <td>{{user.phone}}</td>
                 
             </tr>
             </tbody>
@@ -142,6 +152,21 @@
             </md-input-container>
 
         </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Status</label>
+                <md-select ng-model="user.state">
+                    <md-option ng-repeat="status in userStatus" value="{{status}}">
+                        {{status}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+        </div>
+
+
+
     </div>
     <div class="modal-footer">
         <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
