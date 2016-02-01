@@ -1,6 +1,6 @@
 'use strict';
 
-var service = angular.module('app.services', []);
+var service = angular.module('app.services.translation', []);
 
 service.factory('TranslationService', ['$http','appConfig', function($http,appConfig) {
   return {

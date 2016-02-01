@@ -1,6 +1,6 @@
 'use strict';
 
-var services = angular.module('app.services');
+var services = angular.module('app.services.account',[]);
 
 services.factory('AccountService', ['$http','appConfig', function($http, appConfig) {
   return {
@@ -8,7 +8,7 @@ services.factory('AccountService', ['$http','appConfig', function($http, appConf
 
 		CreateUser : function(data, successCallback, errCallback ) {
           
-      var baseLink= appConfig.setting.apiBaseLink + 'user';
+      var baseLink = appConfig.setting.apiBaseLink + 'user';
 
       $http.post(
           baseLink, 
@@ -29,7 +29,7 @@ services.factory('AccountService', ['$http','appConfig', function($http, appConf
 
     GetAllUsers : function(data, callback ) {
           
-      var baseLink= appConfig.setting.apiBaseLink + 'user';
+      var baseLink = appConfig.setting.apiBaseLink + 'user';
 
       $http({
         method: 'GET',

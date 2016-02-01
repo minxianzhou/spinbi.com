@@ -3,17 +3,6 @@
 
     var app = angular.module('app.translate',['app.services']);
 
-    // app.config(function($httpProvider) {
-    //     //Enable cross domain calls
-    //     $httpProvider.defaults.useXDomain = true;
-
-    //     //Remove the header containing XMLHttpRequest used to identify ajax call 
-    //     //that would prevent CORS from working
-    //     delete $httpProvider.defaults.headers.common['X-Requested-With'];
-    // });
-
-
-
 
     app.controller('TranslateCtrl', ['$scope', '$filter' , '$http', '$mdToast','TranslationService', TranslateCtrl]);
 
@@ -27,45 +16,6 @@
         $scope.loading = false;  
         $scope.successed = false; 
         $scope.started = false;  
-
-
-        // console.log(TranslationService.CreateTranslationFeild({andy:'handsome'}));
-
-        $scope.createItem = function(){
-
-
-            // var baseLink= 'http://localhost:1000/api/translate';
-            // $http.post(
-            //         baseLink, 
-            //         {
-            //             language : 'ZH',
-            //             pattern : 'room',
-            //             text : '房间',
-            //             length : 0
-            //         }, 
-            //         {}
-            //     ).then(function(res){
-                   
-            //         //$scope.result = res.data;  
-            //     },function(err){
-            //        if(err)
-            //             console.log(err);
-            //     });
-
-            TranslationService.CreateTranslationFeild(
-                {
-                    language : 'ZH',
-                    pattern : 'room',
-                    text : '房间',
-                    length : 0
-                },
-                function(response){
-                    console.log(response);
-                }
-            );  
-
-
-        };
 
 
         $scope.print = function(){
@@ -98,7 +48,7 @@
                 return false;
             }
 
-            var baseLink= 'http://localhost:1000/api/content';
+            var baseLink= 'http://api.spinbi.com/api/content';
             $scope.started = true;  
             $scope.loading = true;  
             $scope.successed = false; 

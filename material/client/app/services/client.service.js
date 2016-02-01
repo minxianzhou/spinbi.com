@@ -1,6 +1,6 @@
 'use strict';
 
-var services = angular.module('app.services');
+var services = angular.module('app.services.client',[]);
 
 services.factory('ClientService', ['$http', function($http) {
   return {

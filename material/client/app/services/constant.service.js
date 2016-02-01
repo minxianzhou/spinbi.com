@@ -1,6 +1,6 @@
 'use strict';
 
-var services = angular.module('app.services');
+var services = angular.module('app.services.constant',[]);
 
 services.factory('ConstantService', ['$http','appConfig', function($http,appConfig) {
   return {
