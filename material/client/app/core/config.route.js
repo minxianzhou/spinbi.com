@@ -6,7 +6,7 @@
             var routes, setRoutes;
 
             routes = [
-                'home', 'account/signup','account/signin',
+                'account/signup','account/signin',
                 'ui/cards', 'ui/typography', 'ui/buttons', 'ui/icons', 'ui/grids', 'ui/widgets', 'ui/components', 'ui/timeline', 'ui/lists', 'ui/pricing-tables',
                 'map/maps',
                 'table/static', 'table/dynamic', 'table/responsive',
@@ -32,14 +32,29 @@
             return setRoutes(route);
             });
 
+            // $urlRouterProvider
+            //     .when('/', '/dashboard')
+            //     .otherwise('/dashboard');
+
             $urlRouterProvider
                 .when('/', '/dashboard')
-                .otherwise('/dashboard');
+                .when('/signup', '/account/signup')
+                .otherwise('/home');
 
 
             $stateProvider.state('dashboard', {
                 url: '/dashboard',
                 templateUrl: 'app/dashboard/dashboard.html'
+            });
+
+            $stateProvider.state('home', {
+                url: '/home',
+                templateUrl: 'app/landing/home.html'
+            });
+
+            $stateProvider.state('membership', {
+                url: '/membership',
+                templateUrl: 'app/landing/membership.html'
             });
 
 

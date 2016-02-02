@@ -26,6 +26,7 @@
                 switch (path) {
               
                     case '/home':
+                    case '/membership':
                     case '/account/signup':
                     case '/account/signin':
                         return $element.addClass('body-wide');
