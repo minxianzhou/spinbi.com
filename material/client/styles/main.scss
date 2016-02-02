@@ -140,6 +140,16 @@
 
 
 
+	.md-select-menu-container{
+		&.md-active {
+			z-index: 100000000000000;
+		
+
+		}
+
+	}
+
+
 
 .top-nav{
 	height: 80px;

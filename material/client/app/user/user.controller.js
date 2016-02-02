@@ -64,6 +64,7 @@
 
 
         $scope.userList = [];
+        $scope.selectedUser = null;
 
         var init = function(){
             AccountService.GetAllUsers({}, function(err,result){
@@ -84,23 +85,30 @@
 
         };
 
-        $scope.createUser = function () {
+        $scope.editUser = function (user) {
+            $scope.selectedUser = user;
 
             var modalInstance = $uibModal.open({
                 // animation: $scope.animationsEnabled,
                 animation: true,
                 templateUrl: 'ModalCreateUser.html',
-                controller: 'ModalInstanceCtrl',
+                controller: 'ModalCreateUserInstanceCtrl',
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                    items: function () {
-                        return '12';
+                    user: function () {
+                        return user;
+                    },
+             
+                    userStatus: function(){
+                        return $scope.userStatus;
                     }
                 }
             });
 
             modalInstance.result.then(function (newUser) {
+                console.log(newUser);
+                $scope.selectedUser = newUser;
                 //$scope.selected = selectedItem;
             }, function () {
                 //log.info('Modal dismissed at: ' + new Date());
@@ -112,28 +120,47 @@
         init();
     }
 
-    function ModalCreateUserInstanceCtrl($scope, $uibModalInstance, items) {
-        // $scope.items = items;
+    app.controller('ModalCreateUserInstanceCtrl', ['$scope', '$uibModalInstance', 'AccountService', 'user', 'userStatus', ModalCreateUserInstanceCtrl]);
+    function ModalCreateUserInstanceCtrl($scope, $uibModalInstance, AccountService, user, userStatus) {
+        
+        console.log(userStatus);
 
-        // $scope.selected = {
-        //     item: $scope.items[0]
-        // };
-        console.log('sss');
+        $scope.user = user;
+        $scope.userStatus = userStatus;
 
 
         $scope.ok = function() {
-            console.log('sss');
+            // console.log('sss');
 
-            $uibModalInstance.close('000');
+            // $uibModalInstance.close('000');
+            AccountService.UpdateUser($scope.user, function(err,result){
+                if(err)
+                    console.log(err);
+                else   
+                    console.log(result);
+                 $uibModalInstance.close($scope.user);
+            })
+            
+           
         };
 
         $scope.cancel = function() {
             $uibModalInstance.dismiss("cancel");
         };
 
-        $scope.createUser = function() {
-            $uibModalInstance.close({ user: 'andy'});
-        };
+
+        function saveUser(){
+            AccountService.UpdateUser($scope.user, function(err,result){
+                if(err)
+                    console.log(err);
+                else   
+                    console.log(result);
+                
+            })
+
+        }
+
+       
 
     }
 
