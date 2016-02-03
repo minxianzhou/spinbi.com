@@ -3,6 +3,12 @@
 		<div class="panel-body padding-lg">
 			<md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
             <span class="space"></span>
+
+            <md-button class="md-raised btn-w-md md-accent" ng-click="show()">Alert</md-button>
+            <span class="space"></span>
+            <md-button class="md-raised btn-w-md md-accent" ng-click="showConfirm()">Show Advanced</md-button>
+            <span class="space"></span>
+
 		</div>
 	</div>
 </div>
@@ -19,48 +25,60 @@
         
         <div layout layout-sm="column">
             <md-input-container flex>
-                <label>First name</label>
-                <input ng-model="user.firstName">
+                <label>First Name</label>
+                <input ng-model="contact.firstName">
             </md-input-container>
             <md-input-container flex>
                 <label>Last Name</label>
-                <input ng-model="user.lastName">
+                <input ng-model="contact.lastName">
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Legal First Name</label>
+                <input ng-model="contact.legalFirstName">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Legal Last Name</label>
+                <input ng-model="contact.legalLastName">
             </md-input-container>
         </div>
 
         <div layout layout-sm="column">
             <md-input-container flex>
                 <label>Email</label>
-                <input ng-model="user.email">
+                <input ng-model="contact.email">
             </md-input-container>
             <md-input-container flex>
                 <label>Phone</label>
-                <input ng-model="user.phone">
+                <input ng-model="contact.phone">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Sin #</label>
+                <input ng-model="contact.sin">
             </md-input-container>
         </div>
 
         <div layout layout-sm="column">
             <md-input-container flex>
-                <label>Company</label>
-                <input ng-model="user.company" >
+                <label>Address</label>
+                <input ng-model="contact.address.address">
             </md-input-container>
-
         </div>
-
         <div layout layout-sm="column">
-
-          
-
+        
             <md-input-container flex>
-                <label>Status</label>
-                <md-select ng-model="user.status">
-                    <md-option ng-repeat="status in userStatus" value="{{status}}">
-                      {{status}}
-                    </md-option>
-                </md-select>
+                <label>City</label>
+                <input ng-model="contact.address.city">
             </md-input-container>
-
+            <md-input-container flex>
+                <label>Potal Code</label>
+                <input ng-model="contact.address.zip">
+            </md-input-container>
         </div>
+
+  
 
 
 

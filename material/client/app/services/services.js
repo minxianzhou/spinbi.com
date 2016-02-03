@@ -5,6 +5,7 @@ angular.module(
 		'app.services.translation',
 		'app.services.account',
 		'app.services.constant',
-		'app.services.client'
+		'app.services.contact',
+		'app.services.dialog'
 	]
 );

@@ -4,11 +4,11 @@
     var app = angular.module('app.translate',['app.services']);
 
 
-    app.controller('TranslateCtrl', ['$scope', '$filter' , '$http', '$mdToast','TranslationService', TranslateCtrl]);
+    app.controller('TranslateCtrl', ['$scope', '$filter' , '$http','TranslationService','DialogService', TranslateCtrl]);
 
 
 
-    function TranslateCtrl($scope, $filter, $http, $mdToast, TranslationService) {
+    function TranslateCtrl($scope, $filter, $http, TranslationService, DialogService) {
         
         $scope.link ='';  
 
@@ -35,16 +35,10 @@
 
             if($scope.link == ''){
 
-                // $mdToast.show({
-                //     controller: 'ToastCustomDemo',
-                //     templateUrl: 'toast-template.html',
-                //     parent : $document[0].querySelector('#toastBounds'),
-                //     hideDelay: 6000,
-                //     position: $scope.getToastPosition()
-                // });    
+                DialogService.ShowAlert('URL Cannot be empty !','please input a valide MLS url ...');                
                 return false;    
             }else if( $scope.link.indexOf('v3.torontomls.net') == -1 ){
-                alert('wrong url');
+                DialogService.ShowAlert('Invalied URL Input','please input a valide MLS url ...');
                 return false;
             }
 

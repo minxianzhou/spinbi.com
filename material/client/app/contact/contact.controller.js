@@ -4,19 +4,22 @@
     var app = angular.module('app.contact',['app.services']);
 
 
-    app.controller('ContactCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'AccountService', 'ConstantService', ContactCtrl ]);
+    app.controller('ContactCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'ConstantService','DialogService', ContactCtrl ]);
 
 
-    function ContactCtrl($scope, $filter, $http, $uibModal, AccountService, ConstantService) {
+    function ContactCtrl($scope, $filter, $http, $uibModal, ConstantService, DialogService) {
 
         $scope.contactList = [];
         $scope.selectedUser = null;
 
+        $scope.show = function(){
+            DialogService.ShowAlert('this is alert title','my description about andy');
+        };
+
+   
+
+
         var init = function(){
-            AccountService.GetAllUsers({}, function(err,result){
-                console.log(result);
-                $scope.userList = result.data;
-            });
 
             ConstantService.GetValue('UserStatus', function(err,result){
 
@@ -42,7 +45,6 @@
                 backdrop: 'static',
                 size: 'lg',
                 resolve: {
-                   
                 }
             });
 
@@ -59,21 +61,21 @@
         init();
     }
 
-    app.controller('ModalCreateContactInstanceCtrl', ['$scope', '$uibModalInstance', 'AccountService', ModalCreateContactInstanceCtrl]);
-    function ModalCreateContactInstanceCtrl($scope, $uibModalInstance, AccountService) {
+    app.controller('ModalCreateContactInstanceCtrl', ['$scope', '$uibModalInstance', 'ContactService', ModalCreateContactInstanceCtrl]);
+    function ModalCreateContactInstanceCtrl($scope, $uibModalInstance, ContactService) {
         
         
-
+        $scope.contact = {};
 
         $scope.ok = function() {
 
-            // AccountService.UpdateUser($scope.user, function(err,result){
-            //     if(err)
-            //         console.log(err);
-            //     else   
-            //         console.log(result);
-            //      $uibModalInstance.close($scope.user);
-            // })
+            ContactService.CreateContact($scope.contact, function(err,result){
+                if(err)
+                    console.log(err);
+                else   
+                    console.log(result);
+                 $uibModalInstance.close();
+            })
             
             $uibModalInstance.close('ok');
            
