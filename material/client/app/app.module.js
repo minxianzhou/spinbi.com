@@ -17,6 +17,7 @@
         ,'app.translate'
         ,'app.user'
         ,'app.account'
+        ,'app.contact'
 
         // Custome service
         ,'app.services'

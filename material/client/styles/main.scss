@@ -151,14 +151,6 @@
 
 
 
-.top-nav{
-	height: 80px;
-	background-color: white;
-	    box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-}
-
-
-
 .center-containor{
 	display: inline-block;
 	margin: 0 auto;
@@ -167,3 +159,46 @@
 		margin-right: 40px;
 	}
 }
+
+
+
+.top-nav{
+	height: 80px;
+	width: 100%;
+	background-color: white;
+	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
+/*	position: fixed;*/
+}
+
+.navbar{
+	height: 80px;
+    padding: 14px 0px;
+	.logo{
+		display: inline-block;
+		font-size: 35px;
+    	color: #0C9B8D;
+
+	}
+}
+
+.center-containor{
+	max-width: 1333px;
+	margin: auto;
+	/*background-color: gray;*/
+	display: block;
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

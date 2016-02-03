@@ -1,0 +1,73 @@
+<div class="page page-dashboard" data-ng-controller="ContactCtrl">
+	<div class="panel panel-default">
+		<div class="panel-body padding-lg">
+			<md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
+            <span class="space"></span>
+		</div>
+	</div>
+</div>
+
+
+
+
+
+<script type="text/ng-template" id="ModalCreateContact.html">
+    <div class="modal-header">
+        <h3>Edit Contact</h3>
+    </div>
+    <div class="modal-body">
+        
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>First name</label>
+                <input ng-model="user.firstName">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Last Name</label>
+                <input ng-model="user.lastName">
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Email</label>
+                <input ng-model="user.email">
+            </md-input-container>
+            <md-input-container flex>
+                <label>Phone</label>
+                <input ng-model="user.phone">
+            </md-input-container>
+        </div>
+
+        <div layout layout-sm="column">
+            <md-input-container flex>
+                <label>Company</label>
+                <input ng-model="user.company" >
+            </md-input-container>
+
+        </div>
+
+        <div layout layout-sm="column">
+
+          
+
+            <md-input-container flex>
+                <label>Status</label>
+                <md-select ng-model="user.status">
+                    <md-option ng-repeat="status in userStatus" value="{{status}}">
+                      {{status}}
+                    </md-option>
+                </md-select>
+            </md-input-container>
+
+        </div>
+
+
+
+    </div>
+    <div class="modal-footer">
+        <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
+        <button ui-wave class="btn btn-flat btn-primary" ng-click="ok()">Create</button>
+    </div>
+</script>
+
