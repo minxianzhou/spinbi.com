@@ -1,16 +1,76 @@
 <div class="page page-dashboard" data-ng-controller="ContactCtrl">
+
+
 	<div class="panel panel-default">
 		<div class="panel-body padding-lg">
-			<md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
-            <span class="space"></span>
+			<!-- <md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
+            <span class="space"></span> -->
 
-            <md-button class="md-raised btn-w-md md-accent" ng-click="show()">Alert</md-button>
+            <!-- <md-button class="md-raised btn-w-md md-accent" ng-click="show()">Alert</md-button>
             <span class="space"></span>
             <md-button class="md-raised btn-w-md md-accent" ng-click="showConfirm()">Show Advanced</md-button>
-            <span class="space"></span>
+            <span class="space"></span> -->
+
+            <div layout layout-sm="column">
+	            <md-input-container flex>
+	                <label>Search Contact</label>
+	                <input ng-model="search.key">
+	            </md-input-container>
+
+
+	            <md-input-container flex>
+                    <label>Sort Type</label>
+                    <md-select ng-model="search.sortType">
+                        <md-option ng-repeat="state in states" value="{{state.abbrev}}">
+                            {{state.abbrev}}
+                        </md-option>
+                    </md-select>
+                </md-input-container>
+	            <md-input-container flex>
+                    <label>Sort Order</label>
+                    <md-select ng-model="search.sortOrder">
+                        <md-option value="ASE">ASE</md-option>
+                        <md-option value="DESE">DESE</md-option>
+                    </md-select>
+                </md-input-container>
+	        </div>
+	        <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="createContact()">Create Contact</md-button>
+            <span class="space"></span> 
+		</div>
+	</div>
+
+
+	<div class="panel panel-default contact-card-view" >
+		<div class="panel-body padding-lg">
+
+			<div class="panel panel-info contact-card" ng-repeat="contact in contactList">
+	            <div class="panel-heading">
+	                {{ contact.firstName + " " +  contact.lastName }}
+	            </div>
+	            <div class="panel-body">
+	                
+	                <div class="card-label">
+		                <i class="zmdi zmdi-email"></i>
+		                {{contact.email}}
+	                </div>
+
+	                <div class="card-label">
+		                <i class="zmdi zmdi-phone"></i>
+		                {{contact.phone}}
+	                </div>
+
+	                <div class="card-label">
+		                <i class="zmdi zmdi-bookmark"></i>
+		                {{contact.phone}}
+	                </div>
+	                
+	            </div>
+	        </div>
+
 
 		</div>
 	</div>
+
 </div>
 
 

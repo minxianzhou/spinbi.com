@@ -15,6 +15,17 @@ services.factory('ContactService', ['$http','appConfig', function($http,appConfi
       },function(err){
      		callback(err);
       });
-		}
+		},
+    GetAllContacts : function( callback ) {
+      var baseLink= appConfig.setting.apiBaseLink +'contact';    
+      $http.get(
+          baseLink, 
+          {}
+      ).then(function(res){
+         callback(null, res);
+      },function(err){
+        callback(err);
+      });
+    }
   }
 }]);

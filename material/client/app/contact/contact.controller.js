@@ -4,10 +4,10 @@
     var app = angular.module('app.contact',['app.services']);
 
 
-    app.controller('ContactCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'ConstantService','DialogService', ContactCtrl ]);
+    app.controller('ContactCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'ContactService','DialogService', ContactCtrl ]);
 
 
-    function ContactCtrl($scope, $filter, $http, $uibModal, ConstantService, DialogService) {
+    function ContactCtrl($scope, $filter, $http, $uibModal, ContactService, DialogService) {
 
         $scope.contactList = [];
         $scope.selectedUser = null;
@@ -21,15 +21,16 @@
 
         var init = function(){
 
-            ConstantService.GetValue('UserStatus', function(err,result){
+            
 
+
+            ContactService.GetAllContacts(function(err, result){
                 if(err){
                     console.log(err);
                 }else{
                     console.log(result);
-                    $scope.userStatus = result.data;
+                    $scope.contactList = result.data
                 }
-                
             });
 
         };

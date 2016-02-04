@@ -76,7 +76,7 @@
 
 	
 	.traslation-panel{
-		max-height: 560px;
+		height: 50vh;
 		overflow-y:auto;
 		transition: all 0.75s ease-in-out;
 
@@ -162,14 +162,21 @@
 
 
 
-.top-nav{
+body{
+	/*padding-top: 80px;*/
+}
+
+.header{
 	height: 80px;
 	width: 100%;
 	background-color: white;
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
-/*	position: fixed;*/
+	position: fixed;
+	z-index: 10;
 }
-
+.header-span{
+	height: 80px;
+}
 .navbar{
 	height: 80px;
     padding: 14px 0px;
@@ -177,23 +184,45 @@
 		display: inline-block;
 		font-size: 35px;
     	color: #0C9B8D;
-
 	}
 }
 
 .center-containor{
-	max-width: 1333px;
+	max-width: 1280px;
 	margin: auto;
 	/*background-color: gray;*/
 	display: block;
 }
 
 
+.contact-card-view{
+
+	height: 70vh;
 
 
+	.contact-card{
+		width: 230px;
+		height: 150px;
+		float: left;
+		margin: 0 5px 5px 0;
+		cursor: pointer;
+	}
+	.card-label{
 
+		position: relative;
+		padding-left: 28px;
+   	 	margin-bottom: 10px;
+   	 	color: #7C7C96;
 
+		.zmdi{
+			position: absolute;
+			top: 0;
+			left: 0;
+			font-size: 18px;
+		}	
+	}
 
+}
 
 
 
