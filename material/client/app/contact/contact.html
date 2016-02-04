@@ -21,9 +21,9 @@
 	            <md-input-container flex>
                     <label>Sort Type</label>
                     <md-select ng-model="search.sortType">
-                        <md-option ng-repeat="state in states" value="{{state.abbrev}}">
-                            {{state.abbrev}}
-                        </md-option>
+                        <md-option value="Date">Date</md-option>
+                        <md-option value="Name">Name</md-option>
+                        <md-option value="Email">Email</md-option>
                     </md-select>
                 </md-input-container>
 	            <md-input-container flex>
@@ -34,7 +34,7 @@
                     </md-select>
                 </md-input-container>
 	        </div>
-	        <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="createContact()">Create Contact</md-button>
+	        <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="openContactModal()">Create Contact</md-button>
             <span class="space"></span> 
 		</div>
 	</div>
@@ -43,7 +43,7 @@
 	<div class="panel panel-default contact-card-view" >
 		<div class="panel-body padding-lg">
 
-			<div class="panel panel-info contact-card" ng-repeat="contact in contactList">
+			<div class="panel panel-info contact-card" ng-click="openContactModal(contact)" ng-repeat="contact in contactList">
 	            <div class="panel-heading">
 	                {{ contact.firstName + " " +  contact.lastName }}
 	            </div>
@@ -77,9 +77,10 @@
 
 
 
-<script type="text/ng-template" id="ModalCreateContact.html">
+<script type="text/ng-template" id="ModalContact.html">
     <div class="modal-header">
-        <h3>Edit Contact</h3>
+        <h3 ng-if="mode=='New'">Create New Contact</h3>
+        <h3 ng-if="mode=='Edit'">Edit Contact</h3>
     </div>
     <div class="modal-body">
         
@@ -145,7 +146,9 @@
     </div>
     <div class="modal-footer">
         <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
-        <button ui-wave class="btn btn-flat btn-primary" ng-click="ok()">Create</button>
+        <button ui-wave ng-if="mode=='New'" class="btn btn-flat btn-primary" ng-click="create()">Create</button>
+
+        <button ui-wave ng-if="mode=='Edit'" class="btn btn-flat btn-primary" ng-click="update()">Save</button>
     </div>
 </script>
 

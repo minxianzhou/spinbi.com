@@ -26,6 +26,18 @@ services.factory('ContactService', ['$http','appConfig', function($http,appConfi
       },function(err){
         callback(err);
       });
+    },
+    UpdateContacts : function( data, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink +'contact';    
+      $http.put(
+          baseLink, 
+          data,
+          {}
+      ).then(function(res){
+         callback(null, res);
+      },function(err){
+        callback(err);
+      });
     }
   }
 }]);
