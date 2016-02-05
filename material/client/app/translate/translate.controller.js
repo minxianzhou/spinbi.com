@@ -42,7 +42,8 @@
                 return false;
             }
 
-            var baseLink= 'http://api.spinbi.com/api/content';
+            // var baseLink= 'http://api.spinbi.com/api/content';
+            var baseLink= 'http://localhost:1000/api/content';
             $scope.started = true;  
             $scope.loading = true;  
             $scope.successed = false; 
