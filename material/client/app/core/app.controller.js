@@ -2,11 +2,45 @@
     'use strict';
 
     angular.module('app')
-    .controller('AppCtrl', [ '$scope', '$rootScope', '$state', '$document', 'appConfig', AppCtrl]) // overall control
+    .controller('AppCtrl', [ '$scope', '$rootScope', '$state', '$document', 'appConfig', 'AccountService', AppCtrl]) // overall control
     
-    function AppCtrl($scope, $rootScope, $state, $document, appConfig) {
+    function AppCtrl($scope, $rootScope, $state, $document, appConfig, AccountService) {
 
-        $rootScope.ssss = 'ssss';
+        // get user account info
+
+        $rootScope.aa = 'from root scope';
+        $rootScope.accountInfo = {
+            isLogin : false,
+            user : null
+        };
+
+        $rootScope.isLogin = function(){ return $rootScope.accountInfo.isLogin; }
+        $rootScope.isAdmin = function(){
+            if($rootScope.isLogin() && $rootScope.accountInfo.user.type == 'Adminidtrator' )
+                return true;
+            else
+                return false;
+        };
+        $rootScope.accountSync = function(callback){
+            AccountService.GetAccountInfo(function(err, result){
+
+                if(err || result.data == null){
+                    $rootScope.accountInfo.isLogin = false;
+                    $rootScope.accountInfo.user = null;
+                }else{
+                    $rootScope.accountInfo.isLogin = true;
+                    $rootScope.accountInfo.user = result.data;
+                }
+                //console.log($rootScope.accountInfo.user);
+
+                if(typeof callback !== 'undefined')
+                    callback();
+            });
+
+        }
+        $rootScope.accountSync();
+
+
         $scope.pageTransitionOpts = appConfig.pageTransitionOpts;
         $scope.main = appConfig.main;
         $scope.color = appConfig.color;

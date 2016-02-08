@@ -34,6 +34,9 @@
     app.controller('SignInCtrl', ['$scope', '$rootScope', '$window', '$location', 'AccountService', SignInCtrl]);
     function SignInCtrl($scope, $rootScope, $window, $location, AccountService) {
 
+
+    	if($rootScope.isLogin())
+    		$window.location = "#/dashboard";
     	
         $scope.email = '';
 		$scope.password = '';
@@ -47,18 +50,12 @@
 	        }, function success(err, result){
 
 	        	if( result.status == 'ok'){	
-	        		//console.log(result.data._id);
 	        		$window.localStorage.Authorization = result.data.token._id;
-	        		// $window.localStorage.firstName = result.data.firstName;
-	        		// $window.localStorage.lastName = result.data.lastName;
-	        		// $window.localStorage.email = result.data.email;
-	        		// $window.localStorage.type = result.data.type;
-	        		// $window.localStorage.phone = result.data.phone;
-	        		// $window.localStorage.company = result.data.company;
-	        	
-	        		$rootScope.UserInfo = result.data.user;
 
-	        		$location.path('/dashboard');
+	        		$rootScope.accountSync(function(){
+						$location.path('/dashboard');	
+					});
+	        		
 	        	}else{
 	        		//console.log(result.messages);
 	        		$scope.msg = result.messages;

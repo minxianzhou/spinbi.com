@@ -11,29 +11,23 @@
 
 
     	$scope.accountUserName = function(){
-			// var userInfo = $window.localStorage;
+			//console.log($rootScope);
 
-			
-			console.log($rootScope);
-			//return $rootScope.UserInfo.firstName + ' ' + $rootScope.UserInfo.lastName;
-
-			if(typeof $rootScope.UserInfo === 'undefined'){
-				return '';
+			if($rootScope.accountInfo.user != null){
+				return $rootScope.accountInfo.user.firstName + ' ' + $rootScope.accountInfo.user.lastName;
 			}else{
-				return $rootScope.UserInfo.firstName + ' ' + $rootScope.UserInfo.lastName;
+				return '';
 			}
-			
-
 		}
 
 		$scope.logout = function(){
 			AccountService.SignOut(function(err){
 				
 				$window.localStorage.clear();
-				delete $rootScope.UserInfo;
-
-
-				$location.path('/account/signin');
+				
+				$rootScope.accountSync(function(){
+					$location.path('/account/signin');	
+				});
 
 			});
 		}

@@ -60,20 +60,25 @@ services.factory('AccountService', ['$http','appConfig', function($http, appConf
 
       //return data;
     },
+    GetAccountInfo : function(callback ) {
+          
+      var baseLink = appConfig.setting.apiBaseLink + 'account';
+
+      $http({
+        method: 'GET',
+        url: baseLink
+      }).then(function(response) {
+        callback(null, response);
+      }, function(response) {
+        callback( response);
+      });
+
+
+      //return data;
+    },
     SignIn : function(data, callback ) {
           
       var baseLink = appConfig.setting.apiBaseLink + 'login';
-
-      // $http({
-      //   method: 'POST',
-      //   url: baseLink,
-      //   data
-      // }).then(function(err, response) {
-      //   callback(null, response);
-      // }, function(err) {
-      //   callback(err);
-      // });
-
 
       $http.post(
           baseLink, 
@@ -85,8 +90,6 @@ services.factory('AccountService', ['$http','appConfig', function($http, appConf
         callback(err);
       });
 
-
-      //return data;
     },
     SignOut : function(callback) {
           

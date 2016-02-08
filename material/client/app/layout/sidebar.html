@@ -19,9 +19,9 @@
             <a md-button aria-label="meanu" href="#translate/translate"><i class="zmdi zmdi-account-calendar"></i><span data-translate="TANSLATE"></span></a>
         </li>
 
-        <li class="nav-divider"></li>
-        <li class="nav-title"> <span data-translate="BACKEND_ADMIN"></span> </li>
-        <li>
+        <li ng-if="isAdmin()" class="nav-divider"></li>
+        <li ng-if="isAdmin()" class="nav-title"> <span data-translate="BACKEND_ADMIN"></span> </li>
+        <li ng-if="isAdmin()" >
             <a md-button aria-label="meanu" href="#translate/management"><i class="zmdi zmdi-account-calendar"></i><span data-translate="TANSLATION"></span></a>
            <!--  <ul>
                 <li><a md-button aria-label="meanu" href="#translate/management"><i class="fa fa-circle"></i><span data-translate="MANAGEMENT"></span></a></li>
@@ -31,6 +31,7 @@
         <li>
             <a md-button aria-label="meanu" href="#user/user"><i class="zmdi zmdi-account-calendar"></i><span data-translate="USER"></span></a>
         </li>
+        
         
         <li class="nav-divider"></li>
         <li><a md-button aria-label="meanu" href="#/dashboard"><i class="zmdi zmdi-home"></i><span data-translate="DASHBOARD"></span> </a></li>
