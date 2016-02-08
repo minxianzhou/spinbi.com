@@ -18,6 +18,7 @@
         ,'app.user'
         ,'app.account'
         ,'app.contact'
+        ,'app.header'
 
         // Custome service
         ,'app.services'

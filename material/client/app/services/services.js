@@ -13,16 +13,12 @@ var app_service = angular.module(
 
 
 
-app_service.factory('authInterceptor', function ($rootScope, $q, $window) {
+app_service.factory('authInterceptor', function ($rootScope, $q, $window, $location) {
   return {
     request: function (config) {
 	    config.headers = config.headers || {};
-
-	    config.headers['Authorization'] =  'test andy';
-
-
-  		if ($window.localStorage.token) {
-        	config.headers['Authorization'] =  $window.localStorage.token;
+  		if ($window.localStorage.Authorization) {
+        	config.headers['Authorization'] =  $window.localStorage.Authorization;
   		}
   		return config;
     },
@@ -30,6 +26,8 @@ app_service.factory('authInterceptor', function ($rootScope, $q, $window) {
       console.log(response.status);
       if (response.status === 401) {
         // handle the case where the user is not authenticated
+        console.log('401 return');
+        $location.path('/account/signin')
       }
       if (response.status === 403) {
 
@@ -46,8 +44,8 @@ app_service.factory('authInterceptor', function ($rootScope, $q, $window) {
 
 
 .config(function ($httpProvider) {
-  $httpProvider.defaults.headers.post['XSRF-AUTH'] = 
-        "some accessToken to be generated later";
+  // $httpProvider.defaults.headers.post['XSRF-AUTH'] = 
+  //       "some accessToken to be generated later";
   $httpProvider.interceptors.push('authInterceptor');
 });
 

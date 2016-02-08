@@ -6,6 +6,7 @@
     
     function AppCtrl($scope, $rootScope, $state, $document, appConfig) {
 
+        $rootScope.ssss = 'ssss';
         $scope.pageTransitionOpts = appConfig.pageTransitionOpts;
         $scope.main = appConfig.main;
         $scope.color = appConfig.color;

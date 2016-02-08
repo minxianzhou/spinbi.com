@@ -59,13 +59,68 @@ services.factory('AccountService', ['$http','appConfig', function($http, appConf
 
 
       //return data;
+    },
+    SignIn : function(data, callback ) {
+          
+      var baseLink = appConfig.setting.apiBaseLink + 'login';
+
+      // $http({
+      //   method: 'POST',
+      //   url: baseLink,
+      //   data
+      // }).then(function(err, response) {
+      //   callback(null, response);
+      // }, function(err) {
+      //   callback(err);
+      // });
+
+
+      $http.post(
+          baseLink, 
+          data,
+          {}
+      ).then(function(res){
+        callback(null, res.data);
+      },function(err){
+        callback(err);
+      });
+
+
+      //return data;
+    },
+    SignOut : function(callback) {
+          
+      var baseLink = appConfig.setting.apiBaseLink + 'logout';
+
+      $http({
+        method: 'GET',
+        url: baseLink
+      }).then(function(response) {
+        callback(null, response);
+      }, function(response) {
+        callback( response);
+      });
     }  
-
-
-
-
-
 
 
   }
 }]);
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
