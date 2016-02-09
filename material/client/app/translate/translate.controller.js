@@ -4,11 +4,11 @@
     var app = angular.module('app.translate',['app.services']);
 
 
-    app.controller('TranslateCtrl', ['$scope', '$filter' , '$http','TranslationService','DialogService', TranslateCtrl]);
+    app.controller('TranslateCtrl', ['$scope', '$filter' , '$http', 'ConstantService', 'TranslationService','DialogService', TranslateCtrl]);
 
 
 
-    function TranslateCtrl($scope, $filter, $http, TranslationService, DialogService) {
+    function TranslateCtrl($scope, $filter, $http, ConstantService, TranslationService, DialogService) {
         
         $scope.link ='';  
 
@@ -16,6 +16,12 @@
         $scope.loading = false;  
         $scope.successed = false; 
         $scope.started = false;  
+
+        ConstantService.GetValue('Languages',function(err, result){
+            console.log(result);
+            $scope.languages = result.data;
+            $scope.selectedLanguage = 'zh'; 
+        });
 
 
         $scope.print = function(){
@@ -96,8 +102,8 @@
 
 
 
-    app.controller('TranslateManagementCtrl', ['$scope', '$filter' , '$http', '$mdToast','TranslationService', TranslateManagementCtrl]);
-    function TranslateManagementCtrl($scope, $filter, $http, $mdToast, TranslationService) {
+    app.controller('TranslateManagementCtrl', ['$scope', '$filter' , '$http', '$mdToast','ConstantService', 'TranslationService', TranslateManagementCtrl]);
+    function TranslateManagementCtrl($scope, $filter, $http, $mdToast, ConstantService, TranslationService) {
 
 
         $scope.languages = [

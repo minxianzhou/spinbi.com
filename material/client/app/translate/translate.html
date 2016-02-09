@@ -4,10 +4,23 @@
 		<div class="panel-body padding-lg">
 			
 			<!-- link input textbox -->
-			<md-input-container class="md-block md-input-has-value">
-				<label for="input_link">Paste Your Toronto MLS Link Here...</label>
-				<input ng-model="link" class="ng-pristine ng-valid md-input ng-touched" id="input_link"  aria-invalid="false" style="" ng-disabled="loading||successed"><div class="md-errors-spacer"></div>
-			</md-input-container>
+
+			<div layout layout-sm="column">
+				<md-input-container flex sclass="md-block md-input-has-value">
+					<label for="input_link">Paste Your Toronto MLS Link Here...</label>
+					<input ng-model="link" class="ng-pristine ng-valid md-input ng-touched" id="input_link"  aria-invalid="false" style="" ng-disabled="loading||successed"><div class="md-errors-spacer"></div>
+				</md-input-container>
+				<md-input-container >
+				    <label>Translate Language</label>
+				    <md-select ng-model="selectedLanguage" style="min-width: 170px">
+				        <md-option ng-repeat="language in languages" value="{{language.code}}">
+				            {{language.desc}}
+				        </md-option>
+				    </md-select>
+				</md-input-container>
+			</div>
+
+
 
 			<!-- translate start button -->
 			<button ng-diabled="successed" class="md-raised btn-w-md md-primary md-button md-ink-ripple " type="button" ng-click="translate()"  ng-disabled="loading||successed"><span class="ng-scope">Translate</span></button>

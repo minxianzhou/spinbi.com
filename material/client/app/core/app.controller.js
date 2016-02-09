@@ -16,7 +16,7 @@
 
         $rootScope.isLogin = function(){ return $rootScope.accountInfo.isLogin; }
         $rootScope.isAdmin = function(){
-            if($rootScope.isLogin() && $rootScope.accountInfo.user.type == 'Adminidtrator' )
+            if($rootScope.isLogin() && $rootScope.accountInfo.user.type == 'Administrator' )
                 return true;
             else
                 return false;
