@@ -43,6 +43,22 @@ services.factory('AccountService', ['$http','appConfig', function($http, appConf
 
     },
 
+    UpdateProfile : function(data, callback ) {
+          
+      var baseLink = appConfig.setting.apiBaseLink + 'profile';
+
+      $http.put(
+          baseLink,
+          data
+      ).then(function(res){
+         callback(null, res);
+      },function(err){
+        if(typeof errCallback !== 'undefined')
+            errCallback(err);
+      });
+
+    },
+
 
     GetAllUsers : function(data, callback ) {
           

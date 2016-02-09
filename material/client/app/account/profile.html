@@ -1,0 +1,74 @@
+<div class="page page-dashboard" data-ng-controller="ProileCtrl">
+
+    <div class="row ui-section">
+
+        <div class="col-lg-12 clearfix">
+            <h2 class="section-header">My Profile</h2>
+        </div>
+
+        <div class="col-md-12">
+            <section class="panel panel-default">
+                <div class="panel-body">
+                    <form>
+                    <div layout="column" ng-cloak class="md-inline-form inputdemoBasicUsage">
+                        <md-content layout-padding>
+                            <form name="userForm">
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Company </label>
+                                        <input ng-model="user.company" >
+                                    </md-input-container>
+                                    <md-input-container >
+                                        <label>Account Type </label>
+                                        <input ng-model="user.type" disabled>
+                                    </md-input-container>
+                                </div>
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>First name</label>
+                                        <input ng-model="user.firstName">
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Last Name</label>
+                                        <input ng-model="user.lastName">
+                                    </md-input-container>
+                                </div>
+
+                                <div layout layout-sm="column">
+                                    <md-input-container flex>
+                                        <label>Email</label>
+                                        <input ng-model="user.email">
+                                    </md-input-container>
+                                    <md-input-container flex>
+                                        <label>Phone</label>
+                                        <input ng-model="user.phone">
+                                    </md-input-container>
+                                </div>
+                                <div layout layout-sm="column" >
+                                    <button ng-click="save()" class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button">
+                                        <span class="zmdi zmdi-floppy"></span>
+                                        <span class="ng-scope">Save</span>
+                                    </button>
+                                    <div class="space"></div>
+
+                                    <button ng-click="revert()" class="md-raised btn-w-md  md-button md-ink-ripple" type="button">
+                                        <span class="zmdi zmdi-undo"></span>
+                                        <span class="ng-scope">Revert</span>
+                                    </button>
+                                </div>
+                   
+                            </form>
+                        </md-content>
+                    </div>
+                    </form>
+                </div>
+            </section>
+        </div>
+    </div>
+
+</div>
+
+
+
+
+

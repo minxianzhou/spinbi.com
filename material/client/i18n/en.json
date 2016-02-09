@@ -10,7 +10,8 @@
     "MANAGEMENT": "Managment",
     "BACKEND_ADMIN": "Backend Admin",
     "USER": "User",
-
+    "SETTINGS": "Settings",
+    "CHANGE_PASSWORD": "Change Password",
 
     "JOHN_DOE": "John Doe",
     "LISA": "Lisa",

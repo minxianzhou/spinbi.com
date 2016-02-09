@@ -65,6 +65,54 @@
 		}
     }
 
+    app.controller('ProileCtrl', ['$scope', '$rootScope', '$window', '$location', 'AccountService', ProileCtrl]);
+    function ProileCtrl($scope, $rootScope, $window, $location, AccountService) {
+
+
+    	
+        $scope.email = '';
+		$scope.password = '';
+		$scope.msg = '';
+
+
+		AccountService.GetAccountInfo(function(err, result){
+			console.log(result);
+			$scope.user = result.data;
+		});
+
+		$scope.save = function(){
+	
+			AccountService.UpdateProfile( $scope.user , function(err, result){
+				if(err)
+					console.log(err);
+				else
+					console.log(result);
+			});
+
+		}
+    }
+
+    app.controller('UserPasswordCtrl', ['$scope', '$rootScope', '$window', '$location', 'AccountService', UserPasswordCtrl]);
+    function UserPasswordCtrl($scope, $rootScope, $window, $location, AccountService) {
+
+
+    	
+        $scope.currrentPassword = '';
+		$scope.newPassword = '';
+		$scope.rePassword = '';
+
+
+
+
+		$scope.update = function(){
+	
+
+		}
+    }
+
+
+
+
 
 
 
