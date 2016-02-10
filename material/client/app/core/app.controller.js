@@ -6,8 +6,10 @@
     
     function AppCtrl($scope, $rootScope, $state, $document, appConfig, AccountService) {
 
-        // get user account info
 
+        // -----------------------------------------
+        // Init Account Information Contol 
+        // -----------------------------------------
         $rootScope.aa = 'from root scope';
         $rootScope.accountInfo = {
             isLogin : false,
@@ -39,6 +41,10 @@
 
         }
         $rootScope.accountSync();
+
+        // -----------------------------------------
+        // end of seation
+        // -----------------------------------------
 
 
         $scope.pageTransitionOpts = appConfig.pageTransitionOpts;

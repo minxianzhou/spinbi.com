@@ -39,7 +39,7 @@
     		$window.location = "#/dashboard";
     	
         $scope.email = '';
-		$scope.password = '';
+		$scope.password = null;
 		$scope.msg = '';
 
 		$scope.signin = function(){
@@ -48,6 +48,9 @@
 	        	email: $scope.email ,
 	        	password: $scope.password
 	        }, function success(err, result){
+	        	
+	        	$scope.email = '';
+				$scope.password = null;
 
 	        	if( result.status == 'ok'){	
 	        		$window.localStorage.Authorization = result.data.token._id;

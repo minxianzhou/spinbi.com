@@ -5,6 +5,23 @@ var service = angular.module('app.services.translation', []);
 service.factory('TranslationService', ['$http','appConfig', function($http,appConfig) {
   return {
 
+    Translate : function(link, lang, callback ) {
+          
+      var baseLink= appConfig.setting.apiBaseLink +'content';
+      $http.post(
+              baseLink, 
+              {
+                  link: link ,
+                  language: lang
+              }, {}
+          ).then(function(res){
+            console.log(res);
+            callback(null, res);
+          },function(err){
+            callback(err);
+          });
+    },
+
 
 		CreateTranslationFeild : function(data, successCallback, errCallback ) {
           

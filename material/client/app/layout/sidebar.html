@@ -11,14 +11,14 @@
             <a md-button aria-label="meanu" href="#/contact/contact"><i class="zmdi zmdi-account-calendar"></i><span data-translate="CONTACTS"></span></a>
         </li>
         <li>
-            <a md-button aria-label="meanu" href="#translate/translate"><i class="zmdi zmdi-account-calendar"></i><span data-translate="FORMS"></span></a>
+            <a md-button aria-label="meanu" href="#translate/translate"><i class="zmdi zmdi-file-text"></i><span data-translate="FORMS"></span></a>
             <ul>
-                <li><a md-button aria-label="meanu" href="#forms/generate"><i class="fa fa-circle"></i><span data-translate="TANSLATE"></span></a></li>
+                <li><a md-button aria-label="meanu" href="#forms/generate"><i class="fa fa-circle"></i><span data-translate="AUTOFILL"></span></a></li>
                 <li><a md-button aria-label="meanu" href="#/forms/history"><i class="fa fa-circle"></i><span data-translate="HISTORY_RECORDS"></span></a></li>
             </ul> 
         </li>
         <li>
-            <a md-button aria-label="meanu" href="#translate/translate"><i class="zmdi zmdi-account-calendar"></i><span data-translate="TANSLATE"></span></a>
+            <a md-button aria-label="meanu" href="#translate/translate"><i class="zmdi zmdi-translate"></i><span data-translate="TANSLATE"></span></a>
             <ul>
                 <li><a md-button aria-label="meanu" href="#translate/translate"><i class="fa fa-circle"></i><span data-translate="TANSLATE"></span></a></li>
                 <li><a md-button aria-label="meanu" href="#translate/history"><i class="fa fa-circle"></i><span data-translate="HISTORY_RECORDS"></span></a></li>
@@ -37,13 +37,13 @@
         <li ng-if="isAdmin()" class="nav-divider"></li>
         <li ng-if="isAdmin()" class="nav-title"> <span data-translate="BACKEND_ADMIN"></span> </li>
         <li ng-if="isAdmin()" >
-            <a md-button aria-label="meanu" href="#translate/management"><i class="zmdi zmdi-account-calendar"></i><span data-translate="TANSLATION"></span></a>
+            <a md-button aria-label="meanu" href="#translate/management"><i class="zmdi zmdi-translate"></i><span data-translate="TANSLATION"></span></a>
            <!--  <ul>
                 <li><a md-button aria-label="meanu" href="#translate/management"><i class="fa fa-circle"></i><span data-translate="MANAGEMENT"></span></a></li>
                 <li><a md-button aria-label="meanu" href="#/ui/typography"><i class="fa fa-circle"></i><span data-translate="SEARCH_USER"></span></a></li>
             </ul> -->
         </li>
-        <li>
+        <li ng-if="isAdmin()">
             <a md-button aria-label="meanu" href="#user/user"><i class="zmdi zmdi-account-calendar"></i><span data-translate="USER"></span></a>
         </li>
         
