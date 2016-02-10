@@ -31,6 +31,7 @@
 
         $scope.clear = function(){
             $scope.link =''; 
+            $scope.selectedLanguage = 'zh'; 
             $scope.loading = false;  
             $scope.successed = false; 
             $scope.started = false;     
@@ -61,7 +62,9 @@
             $http.post(
                     baseLink, 
                     {
-                        link: $scope.link 
+                        link: $scope.link ,
+                        language: $scope.selectedLanguage
+
                     }, 
                     config
                 ).then(function(res){

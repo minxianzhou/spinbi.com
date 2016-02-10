@@ -17,6 +17,7 @@
         ,'ui.router'
         ,'ui.bootstrap'
         ,'duScroll'
+       
     ]);
 
 })();

@@ -13,7 +13,10 @@
                 'form/elements', 'form/layouts', 'form/validation', 'form/wizard',
                 'chart/echarts', 'chart/echarts-line', 'chart/echarts-bar', 'chart/echarts-pie', 'chart/echarts-scatter', 'chart/echarts-more',
                 'page/404', 'page/500', 'page/blank', 'page/forgot-password', 'page/invoice', 'page/lock-screen', 'page/profile', 'page/signin', 'page/signup',
-                'app/calendar','views/dashboard','translate/translate', 'translate/management', 'contact/contact', 'user/user'
+                'app/calendar','views/dashboard',
+                'translate/translate', 'translate/history', 'translate/management', 
+                'forms/generate', 'forms/history', 
+                'contact/contact', 'user/user'
 
             ]
 

@@ -35,6 +35,7 @@ module.exports = function() {
             client + "/styles/**/*.scss"
         ],
         js: [
+            client + "/bower_components/angular-mask/dist/*",
             clientApp + "/**/*.module.js",
             clientApp + "/**/*.js",
             '!' + clientApp + "/**/*.spec.js"

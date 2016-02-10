@@ -23,12 +23,11 @@
         // Custome service
         ,'app.services'
 
-
-        
         // 3rd party feature modules
         ,'ui.tree'
         ,'ngMap'
         ,'textAngular'
+        ,'ngMask'
     ]);
 
 })();
