@@ -33,9 +33,19 @@
                         <md-option value="DESE">DESE</md-option>
                     </md-select>
                 </md-input-container>
+
+                <md-input-container flex>
+                    <label>Max Record</label>
+                    <md-select ng-model="search.limit">
+                        <md-option value="20">20</md-option>
+                        <md-option value="50">50</md-option>
+                        <md-option value="200">200</md-option>
+                        <md-option value="0">No Limit</md-option>
+                    </md-select>
+                </md-input-container>
 	        </div>
 	        <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="openContactModal()">Create Contact</md-button>
-            <span class="space"></span> 
+            
 		</div>
 	</div>
 

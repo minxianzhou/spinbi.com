@@ -12,16 +12,28 @@
         $scope.contactList = [];
         $scope.selectedContact = null;
 
-        // $scope.show = function(){
-        //     DialogService.ShowAlert('this is alert title','my description about andy');
-        // };
+        $scope.search = {
+            sortType : 'Date',
+            sortOrder : 'ASE',
+            limit: 20,
+            key : ''   
+        }
 
    
 
 
         var init = function(){
 
-            ContactService.GetAllContacts(function(err, result){
+            // ContactService.GetAllContacts(function(err, result){
+            //     if(err){
+            //         console.log(err);
+            //     }else{
+            //         console.log(result);
+            //         $scope.contactList = result.data
+            //     }
+            // });
+            
+            ContactService.SearchContacts($scope.search , function(err, result){
                 if(err){
                     console.log(err);
                 }else{
@@ -29,6 +41,7 @@
                     $scope.contactList = result.data
                 }
             });
+
 
         };
 

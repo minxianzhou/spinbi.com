@@ -48,8 +48,7 @@
             }
 
 
-            // var baseLink= 'http://api.spinbi.com/api/content';
-            // var baseLink= 'http://localhost:1000/api/content';
+
 
             $scope.started = true;  
             $scope.loading = true;  
@@ -75,8 +74,7 @@
                     
 
                     // resize the height of ifram
-                    setTimeout(function(){
-                        //console.log(document.getElementById('returnResult').contentWindow.document.body.offsetHeight);    
+                    setTimeout(function(){ 
                         ifm.height = ifm.contentWindow.document.body.scrollHeight + 100 + 'px';
                     },100);
                     
@@ -86,47 +84,6 @@
                 }
 
             });
-
-            // $http.post(
-            //         baseLink, 
-            //         {
-            //             link: $scope.link ,
-            //             language: $scope.selectedLanguage
-
-            //         }, 
-            //         config
-            //     ).then(function(res){
-                    
-
-            //         console.log(res);
-
-            //         var ifm = document.getElementById('returnResult');
-            //         var doc = ifm.contentWindow.document;
-            //         doc.open();
-
-            //         var cssHtml = '<style type="text/css">@media print{body{ background-color:#FFFFFF; background-image:none; color:#000000 }#ad{ display:none;}#leftbar{ display:none;}#contentarea{ width:100%;}}</style>';
-
-
-            //         doc.write( cssHtml +res.data);
-            //         doc.close();
-
-                    
-
-            //         // resize the height of ifram
-            //         setTimeout(function(){
-            //             //console.log(document.getElementById('returnResult').contentWindow.document.body.offsetHeight);    
-            //             ifm.height = ifm.contentWindow.document.body.scrollHeight + 100 + 'px';
-            //         },100);
-                    
-
-            //         $scope.loading = false;  
-            //         $scope.successed = true; 
-                    
-
-            //     },function(err){
-            //         $scope.loading = false;  
-            //         $scope.successed = false; 
-            //     });
 
         };
     }
