@@ -29,7 +29,7 @@
             //         console.log(err);
             //     }else{
             //         console.log(result);
-            //         $scope.contactList = result.data
+                   
             //     }
             // });
             
@@ -38,16 +38,29 @@
                     console.log(err);
                 }else{
                     console.log(result);
-                    $scope.contactList = result.data
+                    $scope.contactList = result.data;
                 }
             });
 
 
         };
 
+        $scope.searchContats = function () {
+
+            ContactService.SearchContacts($scope.search , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    $scope.contactList = result.data;
+                }
+            });
+        }
+
+
         $scope.openContactModal = function (contact) {
 
-
+            var inputContact = null;
             if(typeof contact === 'undefined'){
                 $scope.mode = 'New';
             }else{
@@ -78,9 +91,8 @@
                 }
                 
             }, function () {
+                //  modal cancel exit
 
-                console.log('xx');
-                //log.info('Modal dismissed at: ' + new Date());
             });
         };
 
