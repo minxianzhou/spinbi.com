@@ -1,9 +1,9 @@
-<div class="page page-dashboard" data-ng-controller="ContactCtrl">
+<div class="page page-dashboard" data-ng-controller="FormGenerateCtrl">
 
 
-	<div class="panel panel-default">
-		<div class="panel-body padding-lg">
-			<!-- <md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
+    <div class="panel panel-default">
+        <div class="panel-body padding-lg">
+            <!-- <md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
             <span class="space"></span> -->
 
             <!-- <md-button class="md-raised btn-w-md md-accent" ng-click="show()">Alert</md-button>
@@ -12,64 +12,94 @@
             <span class="space"></span> -->
 
             <div layout layout-sm="column">
-	            <md-input-container flex>
-	                <label>Search Contact</label>
-	                <input ng-model="search.key">
-	            </md-input-container>
+                <md-input-container flex>
+                    <label>Search Contact</label>
+                    <input ng-model="search.key" ng-enter="searchContacts()">
+                </md-input-container>
 
 
-	            <md-input-container flex>
+                <md-input-container flex>
                     <label>Sort Type</label>
                     <md-select ng-model="search.sortType">
                         <md-option value="Date">Date</md-option>
-                        <md-option value="Name">Name</md-option>
                         <md-option value="Email">Email</md-option>
+                        <md-option value="FirstName">First Name</md-option>
+                        <md-option value="LastName">Last Name</md-option>
                     </md-select>
                 </md-input-container>
-	            <md-input-container flex>
+                <md-input-container flex>
                     <label>Sort Order</label>
                     <md-select ng-model="search.sortOrder">
                         <md-option value="ASE">ASE</md-option>
                         <md-option value="DESE">DESE</md-option>
                     </md-select>
                 </md-input-container>
-	        </div>
-	        <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="openContactModal()">Create Contact</md-button>
-            <span class="space"></span> 
-		</div>
-	</div>
+
+                <md-input-container flex>
+                    <label>Max Record</label>
+                    <md-select ng-model="search.limit">
+                        <md-option value="2">2</md-option>
+                        <md-option value="20">20</md-option>
+                        <md-option value="50">50</md-option>
+                        <md-option value="200">200</md-option>
+                        <md-option value="0">No Limit</md-option>
+                    </md-select>
+                </md-input-container>
+            </div>
+
+            <md-button class="md-primary btn-w-md md-raised md-button md-ink-ripple" ng-click="searchContacts()">Search</md-button>
+            <div class="space"></div>
+            <md-button class="md-raised btn-w-md md-accent" ng-click="getRecentContacts()">Recent Contact</md-button>
+            
+
+                
+        </div>
+    </div>
 
 
-	<div class="panel panel-default contact-card-view" >
-		<div class="panel-body padding-lg">
+    <div class="panel panel-default contact-card-view" >
+        <div class="panel-body padding-lg">
+            <a id="mylink" download="ddd.pdf" target="_blank" href="http://localhost:1000/temp/forms/1653b465-b9fc-4ced-b198-b83fb2e13913.pdf">click</a>
 
-			<div class="panel panel-info contact-card" ng-click="openContactModal(contact)" ng-repeat="contact in contactList">
-	            <div class="panel-heading">
-	                {{ contact.firstName + " " +  contact.lastName }}
-	            </div>
-	            <div class="panel-body">
-	                
-	                <div class="card-label">
-		                <i class="zmdi zmdi-email"></i>
-		                {{contact.email}}
-	                </div>
+            <div class="panel panel-info contact-card" ng-click="openContactModal(contact)" ng-repeat="contact in contactList">
+                <div class="panel-heading">
+                    {{ contact.firstName + " " +  contact.lastName }}
+                </div>
+                <div class="panel-body">
+                    <div class="card-label">
+                        <i class="zmdi zmdi-account"></i>
+                        {{contact.legalFirstName + " " +  contact.legalLastName }}
+                    </div>
+                    <div class="card-label">    
+                        <i class="zmdi zmdi-email"></i>
+                        {{contact.email}}
+                    </div>
 
-	                <div class="card-label">
-		                <i class="zmdi zmdi-phone"></i>
-		                {{contact.phone}}
-	                </div>
+                    <div class="card-label">
+                        <i class="zmdi zmdi-phone"></i>
+                        {{contact.phone}}
+                    </div>
 
-	                <div class="card-label">
-		                <i class="zmdi zmdi-bookmark"></i>
-		                {{contact.phone}}
-	                </div>
-	                
-	            </div>
-	        </div>
+                    <!-- <div >
+                        <button ng-click="genForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+              
+                            <span class="ng-scope"> Offer</span>
+                        </button>
+
+                        <button class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
+                          
+                            <span class="ng-scope"> Listing</span>
+                        </button>
 
 
-		</div>
-	</div>
+                    </div> -->
+                    
+                </div>
+            </div>
+
+
+        </div>
+    </div>
 
 </div>
 
@@ -77,14 +107,33 @@
 
 
 
-<script type="text/ng-template" id="ModalContact.html">
+<script type="text/ng-template" id="ModalFormContact.html">
     <div class="modal-header">
-        <h3 ng-if="mode=='New'">Create New Contact</h3>
-        <h3 ng-if="mode=='Edit'">Edit Contact</h3>
+        <h3>Form Generate Here</h3>
     </div>
     <div class="modal-body">
         
-        <div layout layout-sm="column">
+        <div >
+            <button ng-click="genForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+               <!--  <span class="fa fa-headphones ng-scope"></span> -->
+                <span class="ng-scope"> Offer</span>
+            </button>
+
+            <button ng-click="genListingForms()" class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
+                <!-- <span class="fa fa-headphones ng-scope"></span> -->
+                <span class="ng-scope"> Listing</span>
+            </button>
+        </div>
+
+
+        <div ng-show="linkEnable.offer">
+            <a id="downloadOfferLink" download="file.pdf" target="_blank" href=""><h4>Download Offer Forms File</h4></a>
+        </div>
+        <div ng-show="linkEnable.listing">
+            <a id="downloadListingLink" download="file.pdf" target="_blank" href=""><h4>Download Listing Forms File</h4></a>
+        </div>
+
+        <!-- <div layout layout-sm="column">
             <md-input-container flex>
                 <label>First Name</label>
                 <input ng-model="contact.firstName">
@@ -93,51 +142,9 @@
                 <label>Last Name</label>
                 <input ng-model="contact.lastName">
             </md-input-container>
-        </div>
+        </div> -->
 
-        <div layout layout-sm="column">
-            <md-input-container flex>
-                <label>Legal First Name</label>
-                <input ng-model="contact.legalFirstName">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Legal Last Name</label>
-                <input ng-model="contact.legalLastName">
-            </md-input-container>
-        </div>
 
-        <div layout layout-sm="column">
-            <md-input-container flex>
-                <label>Email</label>
-                <input ng-model="contact.email">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Phone</label>
-                <input ng-model="contact.phone" mask="999-999-9999">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Sin #</label>
-                <input ng-model="contact.sin" mask="999-999-999">
-            </md-input-container>
-        </div>
-
-        <div layout layout-sm="column">
-            <md-input-container flex>
-                <label>Address</label>
-                <input ng-model="contact.address.address">
-            </md-input-container>
-        </div>
-        <div layout layout-sm="column">
-        
-            <md-input-container flex>
-                <label>City</label>
-                <input ng-model="contact.address.city">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Potal Code</label>
-                <input ng-model="contact.address.zip">
-            </md-input-container>
-        </div>
 
   
 
@@ -146,9 +153,9 @@
     </div>
     <div class="modal-footer">
         <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
-        <button ui-wave ng-if="mode=='New'" class="btn btn-flat btn-primary" ng-click="create()">Create</button>
+        <button ui-wave ng-if="contactModalmode=='New'" class="btn btn-flat btn-primary" ng-click="create()">Create</button>
 
-        <button ui-wave ng-if="mode=='Edit'" class="btn btn-flat btn-primary" ng-click="update()">Save</button>
+        <button ui-wave ng-if="contactModalmode=='Edit'" class="btn btn-flat btn-primary" ng-click="update()">Save</button>
     </div>
 </script>
 

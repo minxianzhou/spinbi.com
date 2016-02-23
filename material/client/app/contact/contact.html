@@ -14,7 +14,7 @@
             <div layout layout-sm="column">
 	            <md-input-container flex>
 	                <label>Search Contact</label>
-	                <input ng-model="search.key">
+	                <input ng-model="search.key" ng-enter="searchContacts()">
 	            </md-input-container>
 
 
@@ -22,8 +22,9 @@
                     <label>Sort Type</label>
                     <md-select ng-model="search.sortType">
                         <md-option value="Date">Date</md-option>
-                        <md-option value="Name">Name</md-option>
                         <md-option value="Email">Email</md-option>
+                        <md-option value="FirstName">First Name</md-option>
+                        <md-option value="LastName">Last Name</md-option>
                     </md-select>
                 </md-input-container>
 	            <md-input-container flex>
@@ -37,6 +38,7 @@
                 <md-input-container flex>
                     <label>Max Record</label>
                     <md-select ng-model="search.limit">
+                        <md-option value="2">2</md-option>
                         <md-option value="20">20</md-option>
                         <md-option value="50">50</md-option>
                         <md-option value="200">200</md-option>
@@ -45,9 +47,11 @@
                 </md-input-container>
 	        </div>
 
-            <md-button class="md-raised btn-w-md md-accent" ng-click="searchContats()">Search</md-button>
-
-	        <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="openContactModal()">Create Contact</md-button>
+            <md-button class="md-primary btn-w-md md-raised md-button md-ink-ripple" ng-click="searchContacts()">Search</md-button>
+            <div class="space"></div>
+	        <md-button class="md-raised btn-w-md md-accent" ng-click="getRecentContacts()">Recent Contact</md-button>
+            
+            <md-button class="md-raised btn-w-md md-accent" style="float:right" ng-click="openContactModal()">Create Contact</md-button>
                 
 		</div>
 	</div>
@@ -61,7 +65,11 @@
 	                {{ contact.firstName + " " +  contact.lastName }}
 	            </div>
 	            <div class="panel-body">
-	                
+	                <div class="card-label">
+                        <i class="zmdi zmdi-account"></i>
+                        {{contact.legalFirstName + " " +  contact.legalLastName }}
+                    </div>
+
 	                <div class="card-label">
 		                <i class="zmdi zmdi-email"></i>
 		                {{contact.email}}
@@ -92,8 +100,8 @@
 
 <script type="text/ng-template" id="ModalContact.html">
     <div class="modal-header">
-        <h3 ng-if="mode=='New'">Create New Contact</h3>
-        <h3 ng-if="mode=='Edit'">Edit Contact</h3>
+        <h3 ng-if="contactModalmode=='New'">Create New Contact</h3>
+        <h3 ng-if="contactModalmode=='Edit'">Edit Contact</h3>
     </div>
     <div class="modal-body">
         
@@ -159,9 +167,9 @@
     </div>
     <div class="modal-footer">
         <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
-        <button ui-wave ng-if="mode=='New'" class="btn btn-flat btn-primary" ng-click="create()">Create</button>
+        <button ui-wave ng-if="contactModalmode=='New'" class="btn btn-flat btn-primary" ng-click="create()">Create</button>
 
-        <button ui-wave ng-if="mode=='Edit'" class="btn btn-flat btn-primary" ng-click="update()">Save</button>
+        <button ui-wave ng-if="contactModalmode=='Edit'" class="btn btn-flat btn-primary" ng-click="update()">Save</button>
     </div>
 </script>
 

@@ -6,6 +6,7 @@ var app_service = angular.module(
 		'app.services.account',
 		'app.services.constant',
 		'app.services.contact',
+    'app.services.form',
 		'app.services.dialog'
 	]
 );

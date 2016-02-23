@@ -4,10 +4,10 @@
     var app = angular.module('app.contact',['app.services']);
 
 
-    app.controller('ContactCtrl', ['$scope', '$filter' , '$http', '$uibModal', 'ContactService','DialogService', ContactCtrl ]);
+    app.controller('ContactCtrl', ['$scope',  '$http', '$uibModal', 'ContactService','DialogService', ContactCtrl ]);
 
 
-    function ContactCtrl($scope, $filter, $http, $uibModal, ContactService, DialogService) {
+    function ContactCtrl($scope, $http, $uibModal, ContactService, DialogService) {
 
         $scope.contactList = [];
         $scope.selectedContact = null;
@@ -24,28 +24,22 @@
 
         var init = function(){
 
-            // ContactService.GetAllContacts(function(err, result){
+     
+            // ContactService.SearchContacts($scope.search , function(err, result){
             //     if(err){
             //         console.log(err);
             //     }else{
             //         console.log(result);
-                   
+            //         $scope.contactList = result.data;
             //     }
             // });
-            
-            ContactService.SearchContacts($scope.search , function(err, result){
-                if(err){
-                    console.log(err);
-                }else{
-                    console.log(result);
-                    $scope.contactList = result.data;
-                }
-            });
+
+            $scope.getRecentContacts();
 
 
         };
 
-        $scope.searchContats = function () {
+        $scope.searchContacts = function () {
 
             ContactService.SearchContacts($scope.search , function(err, result){
                 if(err){
@@ -58,13 +52,32 @@
         }
 
 
+        $scope.getRecentContacts = function () {
+
+            ContactService.SearchContacts({
+                sortType : 'Date',
+                sortOrder : 'ASE',
+                limit: 20,
+                key : ''   
+            } , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    $scope.contactList = result.data;
+                }
+            });
+        }
+
+
+
         $scope.openContactModal = function (contact) {
 
             var inputContact = null;
             if(typeof contact === 'undefined'){
-                $scope.mode = 'New';
+                $scope.contactModalmode = 'New';
             }else{
-                $scope.mode = 'Edit';
+                $scope.contactModalmode = 'Edit';
             }
 
 
@@ -84,7 +97,7 @@
 
             modalInstance.result.then(function (contact) {
 
-                if($scope.mode == 'New'){
+                if($scope.contactModalmode == 'New'){
                     $scope.contactList.push(contact);
                 }else{
                     $scope.selectedContact = contact;
@@ -94,6 +107,9 @@
                 //  modal cancel exit
 
             });
+
+
+
         };
 
 
@@ -105,13 +121,13 @@
     function ModalContactInstanceCtrl($scope, $uibModalInstance, ContactService, contact) {
         
 
-        console.log(contact);
+        //console.log(contact);
 
         if(typeof contact === 'undefined'){
-            $scope.mode = 'New';
+            $scope.contactModalmode = 'New';
             $scope.contact = {};
         }else{
-            $scope.mode = 'Edit';
+            $scope.contactModalmode = 'Edit';
             $scope.contact = contact;
         }
             

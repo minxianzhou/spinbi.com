@@ -2,7 +2,7 @@
     'use strict';
 
     angular.module('app.layout')
-        .directive('ngEnter', ['$rootScope', ngEnter])
+        .directive('ngEnter', ['$rootScope', ngEnterClick])
         .directive('uiPreloader', ['$rootScope', uiPreloader]);
 
     function uiPreloader($rootScope) {
@@ -30,7 +30,7 @@
         };        
     }
 
-    function ngEnter () {
+    function ngEnterClick () {
         return function (scope, element, attrs) {
             element.bind("keydown keypress", function (event) {
                 if(event.which === 13) {

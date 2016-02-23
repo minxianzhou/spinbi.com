@@ -192,10 +192,20 @@ body{
 .navbar{
 	height: 80px;
     padding: 14px 0px;
+
+
 	.logo{
+		position: relative;
 		display: inline-block;
 		font-size: 35px;
     	color: #0C9B8D;
+
+    	img{
+    		height: 57px;
+		    top: -21px;
+		    left: -7px;
+		    position: absolute;
+    	}
 	}
 }
 
@@ -208,7 +218,8 @@ body{
 
 
 .contact-card-view{
-
+	position: relative;
+	
 	height: 70vh;
 
 
@@ -218,6 +229,10 @@ body{
 		float: left;
 		margin: 0 10px 10px 0;
 		cursor: pointer;
+
+		&.with-button{
+			height: 200px;
+		}
 	}
 	.card-label{
 
