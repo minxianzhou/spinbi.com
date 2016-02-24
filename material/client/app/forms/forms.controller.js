@@ -168,9 +168,9 @@
 		};
 
 
-        $scope.genForms = function () {
+        $scope.genOfferForms = function () {
 
-            FormService.GenerateOfferForm({} , function(err, result){
+            FormService.GenerateOfferForm({Contact: contact} , function(err, result){
                 if(err){
                     console.log(err);
                 }else{

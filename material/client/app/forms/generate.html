@@ -114,7 +114,7 @@
     <div class="modal-body">
         
         <div >
-            <button ng-click="genForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+            <button ng-click="genOfferForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
                <!--  <span class="fa fa-headphones ng-scope"></span> -->
                 <span class="ng-scope"> Offer</span>
             </button>
@@ -152,10 +152,7 @@
 
     </div>
     <div class="modal-footer">
-        <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Cancel</button>
-        <button ui-wave ng-if="contactModalmode=='New'" class="btn btn-flat btn-primary" ng-click="create()">Create</button>
-
-        <button ui-wave ng-if="contactModalmode=='Edit'" class="btn btn-flat btn-primary" ng-click="update()">Save</button>
+        <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Close</button>
     </div>
 </script>
 
