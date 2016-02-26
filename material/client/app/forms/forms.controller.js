@@ -23,43 +23,18 @@
             $scope.getRecentContacts();
         };
 
-  //       function downloadURI(uri, name) {
 
+        $scope.getPropertyInfo = function () {
 
-		//   // var link = document.createElement("a");
-		//   // link.download = name;
-		//   // link.href = uri;
-		//   // link.click();
-
-		//   // var link = $('#mylink');
-		//   // link.attr('href',uri);
-		//   // console.log(link);
-		//   // link[0].click();
-
-		//   window.open(uri, '_blank');
-		// }
-
-
-        // $scope.genForms = function () {
-
-        //     FormService.GenerateOfferForm({} , function(err, result){
-        //         if(err){
-        //             console.log(err);
-        //         }else{
-        //             console.log(result);
-                 
-        //             downloadURI(result.data.link,'ddd.pdf');
-
-
-				    //  // anchor.attr({
-				    //  //     href: result.data.link,
-				    //  //     target: '_blank',
-				    //  //     download: 'ddddd.pdf'
-				    //  // })[0].click();
-        //         }
-        //     });
-        // }
-
+            FormService.GetPropertyInfo($scope.search.key , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    //$scope.contactList = result.data;
+                }
+            });
+        }
 
         $scope.searchContacts = function () {
 
