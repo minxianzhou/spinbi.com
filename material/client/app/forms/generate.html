@@ -62,7 +62,7 @@
 
     <div class="panel panel-default contact-card-view" >
         <div class="panel-body padding-lg">
-            <a id="mylink" download="ddd.pdf" target="_blank" href="http://localhost:1000/temp/forms/1653b465-b9fc-4ced-b198-b83fb2e13913.pdf">click</a>
+
 
             <div class="panel panel-info contact-card" ng-click="openContactModal(contact)" ng-repeat="contact in contactList">
                 <div class="panel-heading">
@@ -136,6 +136,14 @@
             <a id="downloadListingLink" download="file.pdf" target="_blank" href=""><h4>Download Listing Forms File</h4></a>
         </div>
 
+
+        <div class="divider"></div>
+        
+        <div>
+            <button ng-click="createOffer()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+                <span class="ng-scope">Create Offer</span>
+            </button>
+        </div>
         
 
         <!-- <div layout layout-sm="column">
