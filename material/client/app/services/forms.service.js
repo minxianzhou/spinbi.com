@@ -31,7 +31,19 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
         });
     },
 
+    AddOffer : function( data, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'offer';
 
+      $http.post(
+            baseLink,
+            data, 
+            {}
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
     
     GetPropertyInfo : function( propertyNumber, callback ) {
       var baseLink= appConfig.setting.apiBaseLink + 'mls/single/' + propertyNumber;

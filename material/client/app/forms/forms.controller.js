@@ -181,6 +181,20 @@
             });
         }
 
+
+        $scope.createOffer = function(){
+            FormService.AddOffer({title: 'my title'} , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    
+
+                }
+            });
+        }
+
+
         $scope.cancel = function() {
             $uibModalInstance.dismiss("cancel");
         };
