@@ -116,6 +116,25 @@
     </div>
     <div class="modal-body">
         
+        <div>
+            <h5>Property</h5>
+            <md-input-container >
+                <label>MlS Number</label>
+                <input ng-model="property.mls_num" ng-enter="">
+            </md-input-container>
+            <button ng-click="loadPropertyInfo()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+                <span class="ng-scope">Load Property Info</span>
+            </button>
+
+            <div>
+                {{property.address}}
+            </div>
+        </div>
+
+
+        <div>
+            {{ contact.firstName}}
+        </div>
         <div >
             <button ng-click="genOfferForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
                <!--  <span class="fa fa-headphones ng-scope"></span> -->

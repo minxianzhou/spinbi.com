@@ -117,8 +117,14 @@
     function ModalContactFormInstanceCtrl($scope, $uibModalInstance, ContactService, FormService, contact) {
         
 
-        //console.log(contact);
+        console.log(contact);
 
+        $scope.contact = contact;
+
+        $scope.property = {
+        	mls_num : '',
+        	address: ''
+        };
 
         function UpdateLinks(uri, name) {
 
@@ -194,6 +200,19 @@
             });
         }
 
+        $scope.loadPropertyInfo = function(){
+            FormService.GetPropertyInfo($scope.property.mls_num , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    var property = result.data.Property;
+
+                    $scope.property.address = property.Address.AddressText;
+                    
+                }
+            });
+        }
 
         $scope.cancel = function() {
             $uibModalInstance.dismiss("cancel");
