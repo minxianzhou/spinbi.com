@@ -111,11 +111,78 @@
 
 
 <script type="text/ng-template" id="ModalFormContact.html">
+<div id="FormContactModal">
     <div class="modal-header">
-        <h3>Form Generate Here</h3>
+        <div class="header-client-info">
+            Client: <strong>{{ contact.firstName + ' ' + contact.lastName}}</strong>
+            ({{ contact.legalFirstName + ' ' + contact.legalLastName}})
+        </div>
+        <div class="header-action-bar">
+
+            <!-- <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" ng-transclude=""><span class="fa fa-headphones ng-scope"></span><span class="ng-scope">  Add Offer</span></button> -->
+
+            <!-- <div class="btn-group dropdown" uib-dropdown="" is-open="status.isopen1" style="">
+                <button ui-wave="" type="button" class="btn btn-raised btn-w-lg btn-primary dropdown-toggle ui-wave" uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false" aria-disabled="false"><span class="ink wave-animate" ></span> Action <span class="caret"></span> </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="javascript:;">Action</a></li>
+                    <li><a href="javascript:;">Another action</a></li>
+                    <li><a href="javascript:;">Something else here</a></li>
+                    <li class="divider"></li>
+                    <li><a href="javascript:;">Separated link</a></li>
+                </ul>
+            </div> -->
+            <div class="btn-group btn-raised dropdown" uib-dropdown="" is-open="status.isopen3" style="">
+                <button ui-wave="" type="button" class="btn btn-w-md btn-info ui-wave"><span class="ink wave-animate"></span> Action</button>
+                <button ui-wave="" type="button" class="btn btn-info dropdown-toggle ui-wave" uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false" aria-disabled="false"><span class="ink wave-animate" ></span>
+                    <span class="caret"></span>
+                    <span class="sr-only">Toggle Dropdown</span>
+                </button>
+                <ul class="dropdown-menu" role="menu">
+                    <li><a href="javascript:;">Create Offer</a></li>
+                    <li><a href="javascript:;">Create Listing</a></li>
+              
+                    <li class="divider"></li>
+                    <li><a href="javascript:;">Close</a></li>
+                </ul>
+            </div>
+
+            
+
+        </div>
+        
     </div>
     <div class="modal-body">
-        
+
+
+        <div>
+            <div ng-repeat="offer in offers">
+                {{ offer.title }}
+            </div>
+        </div>
+
+
+        <div class="ui-tab-container ui-tab-vertical">
+            <uib-tabset class="ui-tab">
+                <uib-tab heading="Home dolor">
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                    <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                    <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                </uib-tab>
+                <uib-tab heading="Quod ea">
+                    <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                    <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                </uib-tab>
+                <uib-tab heading="Earum sequi">
+                    <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                    <p>Quod ea vel dolores earum veritatis quae sunt tempore consectetur adipisicing elit. Suscipit, odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                </uib-tab>
+
+            </uib-tabset>
+        </div>   
+
+
         <div>
             <h5>Property</h5>
             <md-input-container >
@@ -164,29 +231,11 @@
             </button>
         </div>
         
-
-        <!-- <div layout layout-sm="column">
-            <md-input-container flex>
-                <label>First Name</label>
-                <input ng-model="contact.firstName">
-            </md-input-container>
-            <md-input-container flex>
-                <label>Last Name</label>
-                <input ng-model="contact.lastName">
-            </md-input-container>
-
-
-        </div> -->
-
-
-
-  
-
-
-
     </div>
     <div class="modal-footer">
         <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Close</button>
     </div>
+</div>
+
 </script>
 

@@ -117,9 +117,12 @@
     function ModalContactFormInstanceCtrl($scope, $uibModalInstance, ContactService, FormService, contact) {
         
 
-        console.log(contact);
+    	var init = function(){
+    		$scope.getOfferByAgent();
+    	}
 
         $scope.contact = contact;
+        $scope.offers = [];
 
         $scope.property = {
         	mls_num : '',
@@ -189,13 +192,30 @@
 
 
         $scope.createOffer = function(){
-            FormService.AddOffer({title: 'my title'} , function(err, result){
+            FormService.AddOffer(
+            	{	
+            		title: 'my title', 
+            		contactId: $scope.contact._id
+            		
+            	} , function(err, result){
                 if(err){
                     console.log(err);
                 }else{
                     console.log(result);
                     
 
+                }
+            });
+        }
+
+        $scope.getOfferByAgent = function(){
+            FormService.GetOffersByAgent({ contactId: $scope.contact._id} , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    
+                    $scope.offers = result.data;
                 }
             });
         }
@@ -208,7 +228,7 @@
                     console.log(result);
                     var property = result.data.Property;
 
-                    $scope.property.address = property.Address.AddressText;
+                    $scope.property.address = property.Address.AddressText.replace('|', ', ');
                     
                 }
             });
@@ -217,6 +237,8 @@
         $scope.cancel = function() {
             $uibModalInstance.dismiss("cancel");
         };
+
+        init();
     }
 
 })(); 
