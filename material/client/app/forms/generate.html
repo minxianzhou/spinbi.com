@@ -1,6 +1,4 @@
 <div class="page page-dashboard" data-ng-controller="FormGenerateCtrl">
-
-
     <div class="panel panel-default">
         <div class="panel-body padding-lg">
             <!-- <md-button class="md-raised btn-w-md md-accent" ng-click="createContact()">Create Contact</md-button>
@@ -16,7 +14,6 @@
                     <label>Search Contact</label>
                     <input ng-model="search.key" ng-enter="searchContacts()">
                 </md-input-container>
-
 
                 <md-input-container flex>
                     <label>Sort Type</label>
@@ -62,8 +59,6 @@
 
     <div class="panel panel-default contact-card-view" >
         <div class="panel-body padding-lg">
-
-
             <div class="panel panel-info contact-card" ng-click="openContactModal(contact)" ng-repeat="contact in contactList">
                 <div class="panel-heading">
                     {{ contact.firstName + " " +  contact.lastName }}
@@ -82,43 +77,32 @@
                         <i class="zmdi zmdi-phone"></i>
                         {{contact.phone}}
                     </div>
-
                     <!-- <div >
                         <button ng-click="genForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
-              
                             <span class="ng-scope"> Offer</span>
                         </button>
-
                         <button class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
-                          
                             <span class="ng-scope"> Listing</span>
                         </button>
-
-
                     </div> -->
-                    
                 </div>
             </div>
-
-
         </div>
     </div>
-
 </div>
-
-
-
 
 
 <script type="text/ng-template" id="ModalFormContact.html">
 <div id="FormContactModal">
     <div class="modal-header">
+        
         <div class="header-client-info">
             Client: <strong>{{ contact.firstName + ' ' + contact.lastName}}</strong>
             ({{ contact.legalFirstName + ' ' + contact.legalLastName}})
         </div>
-        <div class="header-action-bar">
 
+
+        <div class="header-action-bar">
             <!-- <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" ng-transclude=""><span class="fa fa-headphones ng-scope"></span><span class="ng-scope">  Add Offer</span></button> -->
 
             <!-- <div class="btn-group dropdown" uib-dropdown="" is-open="status.isopen1" style="">
@@ -138,49 +122,48 @@
                     <span class="sr-only">Toggle Dropdown</span>
                 </button>
                 <ul class="dropdown-menu" role="menu">
-                    <li><a href="javascript:;">Create Offer</a></li>
+                    <li><a href="javascript:;"  ng-click="createOffer()">Create Offer</a></li>
                     <li><a href="javascript:;">Create Listing</a></li>
               
                     <li class="divider"></li>
-                    <li><a href="javascript:;">Close</a></li>
+                    <li><a href="javascript:;"  ng-click="cancel()">Close</a></li>
                 </ul>
             </div>
-
-            
-
         </div>
-        
     </div>
     <div class="modal-body">
+        <div class="slider-panel">
+            <a ng-click="closeSlidePanel()" >close</a>
 
+            <div class="ui-tab-container ui-tab-vertical" style="background-color: white">
+                <uib-tabset class="ui-tab">
+                    <uib-tab heading="Home dolor">
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                    </uib-tab>
+                    <uib-tab heading="Quod ea">
+                        <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
+                    </uib-tab>
+                    <uib-tab heading="Earum sequi">
+                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
+                        <p>Quod ea vel dolores earum veritatis quae sunt tempore consectetur adipisicing elit. Suscipit, odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
+                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
+                    </uib-tab>
 
+                </uib-tabset>
+            </div>  
+
+        </div>
         <div>
-            <div ng-repeat="offer in offers">
-                {{ offer.title }}
+            <div class="offer" ng-repeat="offer in offers"  ng-click="openSlidePanel()">
+                <h5>{{ offer.title }}</h5>  
+                <div>{{ offer.created | date: 'MMM d, y' }}</div>
             </div>
         </div>
-
-
-        <div class="ui-tab-container ui-tab-vertical">
-            <uib-tabset class="ui-tab">
-                <uib-tab heading="Home dolor">
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                    <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                    <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
-                </uib-tab>
-                <uib-tab heading="Quod ea">
-                    <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                    <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                </uib-tab>
-                <uib-tab heading="Earum sequi">
-                    <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
-                    <p>Quod ea vel dolores earum veritatis quae sunt tempore consectetur adipisicing elit. Suscipit, odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                </uib-tab>
-
-            </uib-tabset>
-        </div>   
+ 
 
 
         <div>
@@ -199,9 +182,7 @@
         </div>
 
 
-        <div>
-            {{ contact.firstName}}
-        </div>
+      
         <div >
             <button ng-click="genOfferForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
                <!--  <span class="fa fa-headphones ng-scope"></span> -->

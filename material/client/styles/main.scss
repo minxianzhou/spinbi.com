@@ -256,11 +256,44 @@ body{
 		font-size: 20px;
 		display: inline-block;
 	}
+
 	.header-action-bar{
-	
 		float: right;
 		display: inline-block;
 	}
+
+
+	.offer{
+		display: inline-block;
+		width: 160px;
+		height: 80px;
+		background-color: #DC9D9D;
+		color: #564949;
+		padding: 5px;
+		margin: 0 13px 5px 0;
+	}
+
+	.modal-body{
+		overflow: hidden;
+		.slider-panel{
+			-webkit-transition: all 0.35s ease-in-out;
+			-moz-transition: all 0.35s ease-in-out;
+			-o-transition: all 0.35s ease-in-out;
+			transition: all 0.35s ease-in-out;
+			position: absolute;
+			top: 10px;
+			left: 900px;
+			width: 110%;
+			height: 500px;
+			background-color: #74B5AF;
+			z-index: 10000;
+
+			&.open{
+				left: 10px;
+			}
+		}		
+	}
+
 }
 
 

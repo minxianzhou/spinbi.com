@@ -146,10 +146,21 @@
 		  //window.open(uri, '_blank');
 		}
 
+
+        $scope.openSlidePanel = function(){
+            $('.slider-panel').addClass('open');
+        }
+
+        $scope.closeSlidePanel = function(){
+            $('.slider-panel').removeClass('open');
+        }
+
+
 		$scope.linkEnable = {
 			offer: false,
 			listing: false
 		};
+
 
 
         $scope.genOfferForms = function () {
@@ -202,7 +213,7 @@
                     console.log(err);
                 }else{
                     console.log(result);
-                    
+                    $scope.offers.push(result.data);
 
                 }
             });
