@@ -151,11 +151,19 @@
 
         $scope.openSlidePanel = function(offer){
         	$scope.selectedOffer = offer;
+            $('.modal-header').css('overflow','hidden' );
+            $('#action-button').addClass('shiftOut');
             $('.slider-panel').addClass('open');
         }
 
         $scope.closeSlidePanel = function(){
+            
+            $('#action-button').removeClass('shiftOut');
             $('.slider-panel').removeClass('open');
+            setTimeout(function(){
+                $('.modal-header').css('overflow','visible' );    
+            },500);
+            
         }
 
 
@@ -167,43 +175,30 @@
 
 
         $scope.genOfferForms = function () {
-
             FormService.GenerateOfferForm({Contact: contact} , function(err, result){
                 if(err){
                     console.log(err);
                 }else{
                     console.log(result);
-                 
                     UpdateLinks(result.data.link,'test.pdf');
                     $scope.linkEnable.offer = true;
-
-				     // anchor.attr({
-				     //     href: result.data.link,
-				     //     target: '_blank',
-				     //     download: 'ddddd.pdf'
-				     // })[0].click();
                 }
             });
         }
 
         
         $scope.genListingForms = function () {
-
             FormService.GenerateListingForm({} , function(err, result){
                 if(err){
                     console.log(err);
                 }else{
-                    console.log(result);
-       
                     var link = $('#downloadListingLink');
 					link.attr('href',result.data.link);
 					link.attr('download','test.pdf');
                     $scope.linkEnable.listing = true;
-
                 }
             });
         }
-
 
         $scope.createOffer = function(){
             FormService.AddOffer(
@@ -217,6 +212,20 @@
                 }else{
                     console.log(result);
                     $scope.offers.push(result.data);
+
+                }
+            });
+        }
+
+        $scope.updateOffer = function(){
+            FormService.UpdateOffer(
+                $scope.selectedOffer, 
+                function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    //$scope.offers.push(result.data);
 
                 }
             });
@@ -242,7 +251,7 @@
                     console.log(result);
                     var property = result.data.Property;
 
-                    $scope.property.address = property.Address.AddressText.replace('|', ', ');
+                    //$scope.property.address = property.Address.AddressText.replace('|', ', ');
                     $scope.selectedOffer.property_address = property.Address.AddressText.replace('|', ', ');
                     
                 }

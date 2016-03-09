@@ -44,6 +44,21 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
           callback(err);
         });
     },
+
+    UpdateOffer : function( data, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'offer';
+      $http.put(
+            baseLink,
+            data, 
+            {}
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
+
+
     GetOffersByAgent : function( data, callback ) {
       var baseLink= appConfig.setting.apiBaseLink + 'offer/getOffers';
 
