@@ -275,21 +275,30 @@ body{
 
 	.modal-body{
 		overflow: hidden;
+		min-height: 600px;
 		.slider-panel{
+
 			-webkit-transition: all 0.35s ease-in-out;
 			-moz-transition: all 0.35s ease-in-out;
 			-o-transition: all 0.35s ease-in-out;
 			transition: all 0.35s ease-in-out;
 			position: absolute;
-			top: 10px;
+			top: 0px;
 			left: 900px;
 			width: 110%;
 			height: 100%;
 			background-color: #fff;
 			z-index: 10000;
+			padding: 15px 105px 15px 15px;
 
 			&.open{
-				left: 10px;
+				left: 0px;
+			}
+
+
+			.tab-content-box{
+				height: 450px;
+				overflow: auto;
 			}
 		}		
 	}

@@ -122,6 +122,8 @@
     	}
 
         $scope.contact = contact;
+        $scope.selectedOffer = null;
+
         $scope.offers = [];
 
         $scope.property = {
@@ -147,7 +149,8 @@
 		}
 
 
-        $scope.openSlidePanel = function(){
+        $scope.openSlidePanel = function(offer){
+        	$scope.selectedOffer = offer;
             $('.slider-panel').addClass('open');
         }
 
@@ -240,6 +243,7 @@
                     var property = result.data.Property;
 
                     $scope.property.address = property.Address.AddressText.replace('|', ', ');
+                    $scope.selectedOffer.property_address = property.Address.AddressText.replace('|', ', ');
                     
                 }
             });

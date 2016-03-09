@@ -103,18 +103,7 @@
 
 
         <div class="header-action-bar">
-            <!-- <button class="md-raised btn-w-md md-accent md-button md-ink-ripple" type="button" ng-transclude=""><span class="fa fa-headphones ng-scope"></span><span class="ng-scope">  Add Offer</span></button> -->
-
-            <!-- <div class="btn-group dropdown" uib-dropdown="" is-open="status.isopen1" style="">
-                <button ui-wave="" type="button" class="btn btn-raised btn-w-lg btn-primary dropdown-toggle ui-wave" uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false" aria-disabled="false"><span class="ink wave-animate" ></span> Action <span class="caret"></span> </button>
-                <ul class="dropdown-menu" role="menu">
-                    <li><a href="javascript:;">Action</a></li>
-                    <li><a href="javascript:;">Another action</a></li>
-                    <li><a href="javascript:;">Something else here</a></li>
-                    <li class="divider"></li>
-                    <li><a href="javascript:;">Separated link</a></li>
-                </ul>
-            </div> -->
+   
             <div class="btn-group btn-raised dropdown" uib-dropdown="" is-open="status.isopen3" style="">
                 <button ui-wave="" type="button" class="btn btn-w-md btn-info ui-wave"><span class="ink wave-animate"></span> Action</button>
                 <button ui-wave="" type="button" class="btn btn-info dropdown-toggle ui-wave" uib-dropdown-toggle="" ng-disabled="disabled" aria-haspopup="true" aria-expanded="false" aria-disabled="false"><span class="ink wave-animate" ></span>
@@ -133,32 +122,86 @@
     </div>
     <div class="modal-body">
         <div class="slider-panel">
-            <a ng-click="closeSlidePanel()" >close</a>
+   
+            
 
+            <div>
+            <a ui-wave="" href="javascript:;" ng-click="closeSlidePanel()"  class="btn-icon btn-icon-round btn-icon-sm btn-google-plus ui-wave"><i class="zmdi zmdi-close"></i></a>
+                {{selectedOffer.title}} ({{selectedOffer.created |  date:'medium' }})
+            </div>
             <div class="ui-tab-container ui-tab-vertical" style="background-color: white">
                 <uib-tabset class="ui-tab">
-                    <uib-tab heading="Home dolor">
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
-                    </uib-tab>
-                    <uib-tab heading="Quod ea">
-                        <p>Quod ea vel dolores earum veritatis quae sunt tempore odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                        <p>Consectetur adipisicing elit. Reprehenderit enim obcaecati inventore, beatae corporis voluptate, repudiandae voluptatum nesciunt ipsam provident aliquam accusamus assumenda est, veritatis molestias velit non minus laudantium.</p>
-                    </uib-tab>
-                    <uib-tab heading="Earum sequi">
-                        <p>Blanditiis tenetur harum distinctio voluptate asperiores non magnam delectus. Consequatur, deleniti rem magnam possimus necessitatibus iusto suscipit mollitia rerum.</p>
-                        <p>Quod ea vel dolores earum veritatis quae sunt tempore consectetur adipisicing elit. Suscipit, odit molestias sit optio quaerat cupiditate iure repudiandae illum doloremque consectetur incidunt!</p>
-                        <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Suscipit, aspernatur, eum fugit officiis numquam iste aut illo quos pariatur Eligendi, veniam, accusamus.</p>
-                    </uib-tab>
+                    <uib-tab heading="Property Infomation" >
+                        <div class="tab-content-box">
 
+                            <div>
+                                <md-input-container >
+                                    <label>MlS Number</label>
+                                    <input ng-model="property.mls_num" ng-enter="">
+                                </md-input-container>
+                                <a ui-wave=""  ng-click="loadPropertyInfo()"  href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-instagram ui-wave"><i class="fa fa-instagram"></i></a> 
+                            </div>
+
+
+
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Address</label>
+                                    <input ng-model="selectedOffer.property_address" >
+                                </md-input-container>
+                            </div>
+
+                           
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Saller" >
+                        <div class="tab-content-box">
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Saller First Name</label>
+                                    <input ng-model="selectedOffer.property_address" >
+                                </md-input-container>
+                                <md-input-container flex >
+                                    <label>Saller Last Name</label>
+                                    <input ng-model="selectedOffer.property_address" >
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Buyer" >
+                        <div class="tab-content-box">
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Bayer First Name</label>
+                                    <input ng-model="selectedOffer.property_address" >
+                                </md-input-container>
+                                <md-input-container flex >
+                                    <label>Bayer Last Name</label>
+                                    <input ng-model="selectedOffer.property_address" >
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Offer Detail" >
+                        <div class="tab-content-box">
+                            
+                        </div>
+                    </uib-tab>
+                   
+                    
                 </uib-tabset>
             </div>  
 
+            <div style="text-align: right; margin-top: 20px;">
+                <button ng-click="genListingForms()" class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
+                <!-- <span class="fa fa-headphones ng-scope"></span> -->
+                    <span class="ng-scope">Save</span>
+                </button>
+            </div>
+
         </div>
         <div>
-            <div class="offer" ng-repeat="offer in offers"  ng-click="openSlidePanel()">
+            <div class="offer" ng-repeat="offer in offers"  ng-click="openSlidePanel(offer)">
                 <h5>{{ offer.title }}</h5>  
                 <div>{{ offer.created | date: 'MMM d, y' }}</div>
             </div>
@@ -166,7 +209,7 @@
  
 
 
-        <div>
+      <!--   <div>
             <h5>Property</h5>
             <md-input-container >
                 <label>MlS Number</label>
@@ -179,7 +222,7 @@
             <div>
                 {{property.address}}
             </div>
-        </div>
+        </div> -->
 
 
       
