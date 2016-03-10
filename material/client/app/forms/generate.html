@@ -117,10 +117,9 @@
 
     </div>
     <div class="modal-body">
-        <div class="slider-panel">
-   
-            
 
+
+        <div class="slider-panel">
             <div class="header-bar">
                 <a ui-wave="" href="javascript:;" ng-click="closeSlidePanel()"  class="close-icon"><i class="zmdi zmdi-close"></i></a>
                 Offer : {{selectedOffer.title}} ({{selectedOffer.created |  date:'medium' }})
@@ -209,11 +208,18 @@
 
         </div>
         <div>
+            <ul>
+                <li class="offer" ng-repeat="offer in offers"   ng-click="openSlidePanel(offer)">
+                    <div>{{ offer.title }}</div>  
+                <div>{{ offer.property_address }}</div>
+                <div>{{ offer.created | date: 'mediean' }}</div>
+                </li>
+        <!--     </ul>
             <div class="offer" ng-repeat="offer in offers"  ng-click="openSlidePanel(offer)">
                 <div>{{ offer.title }}</div>  
                 <div>{{ offer.property_address }}</div>
                 <div>{{ offer.created | date: 'MMM d, y' }}</div>
-            </div>
+            </div> -->
         </div>
  
 
@@ -238,7 +244,7 @@
 
     </div>
     <div class="modal-footer">
-        <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Close</button>
+       <!--  <button ui-wave class="btn btn-flat btn-default" ng-click="cancel()">Close</button> -->
     </div>
 </div>
 
