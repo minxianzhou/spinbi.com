@@ -203,7 +203,7 @@
         $scope.createOffer = function(){
             FormService.AddOffer(
             	{	
-            		title: 'my title', 
+            		
             		contactId: $scope.contact._id
             		
             	} , function(err, result){

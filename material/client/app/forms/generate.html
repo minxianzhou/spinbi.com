@@ -210,9 +210,10 @@
         <div>
             <ul>
                 <li class="offer" ng-repeat="offer in offers"   ng-click="openSlidePanel(offer)">
-                    <div>{{ offer.title }}</div>  
-                <div>{{ offer.property_address }}</div>
-                <div>{{ offer.created | date: 'mediean' }}</div>
+                    <span class="title">{{ offer.title }}</span>
+                    <div class="address">{{ offer.property_address }}</div>
+                    <span class="badge badge-info created">{{ offer.created | date: 'mediumDate' }}</span>
+               
                 </li>
         <!--     </ul>
             <div class="offer" ng-repeat="offer in offers"  ng-click="openSlidePanel(offer)">
