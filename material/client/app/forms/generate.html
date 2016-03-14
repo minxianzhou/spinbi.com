@@ -48,9 +48,9 @@
             <div class="space"></div>
             <md-button class="md-raised btn-w-md md-accent" ng-click="getRecentContacts()">Recent Contact</md-button>
 
-            <div class="space"></div>
+            <!-- <div class="space"></div>
             <md-button class="md-raised btn-w-md md-accent" ng-click="getPropertyInfo()">Get Property Info</md-button>
-            
+             -->
 
                 
         </div>
@@ -108,7 +108,7 @@
                 </button>
                 <ul class="dropdown-menu" role="menu">
                     <li><a href="javascript:;"  ng-click="createOffer()">Create Offer</a></li>
-                    <li><a href="javascript:;">Create Listing</a></li>
+                    <li><a href="javascript:;" ng-click="createListing()">Create Listing</a></li>
               
                     <li class="divider"></li>
                     <li><a href="javascript:;"  ng-click="cancel()">Close</a></li>
@@ -119,9 +119,9 @@
     <div class="modal-body">
 
 
-        <div class="slider-panel">
+        <div class="offer-panel">
             <div class="header-bar">
-                <a ui-wave="" href="javascript:;" ng-click="closeSlidePanel()"  class="close-icon"><i class="zmdi zmdi-close"></i></a>
+                <a ui-wave="" href="javascript:;" ng-click="closeOfferPanel()"  class="close-icon"><i class="zmdi zmdi-close"></i></a>
                 Offer : {{selectedOffer.title}} ({{selectedOffer.created |  date:'medium' }})
             </div>
             <div class="ui-tab-container ui-tab-vertical" style="background-color: white">
@@ -189,9 +189,25 @@
                     <uib-tab heading="Forms" >
                         <div class="tab-content-box">
                             <button ng-click="" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
-                               <!--  <span class="fa fa-headphones ng-scope"></span> -->
-                                <span class="ng-scope"> Offer</span>
+                                <span class="ng-scope" ng-click="genOfferForms()" > Offer</span>
                             </button>
+
+                            <div class="row">
+
+                                <div class="col-md-4" ng-repeat="form in formList  | orderBy:'-created' ">
+                                    <a  href="{{form.path}}" target="_blank">
+                                        <div class="card bg-dark-light form-card">
+                                            <div class="card-content">
+                                              Form {{ formList.length - $index}}
+                                              <div>{{form.created | date: 'medium'}}</div>
+                                            </div>
+                                        </div>       
+                                    </a>
+
+                                    <!-- <a href="{{form.path}}" target="_blank">form #{{ $index}}</a> -->
+                                </div>
+
+                            </div>
                         </div>
                     </uib-tab>
                    
@@ -207,20 +223,135 @@
             </div>
 
         </div>
+
+
+
+        <div class="listing-panel">
+            <div class="header-bar">
+                <a ui-wave="" href="javascript:;" ng-click="closeListingPanel()"  class="close-icon"><i class="zmdi zmdi-close"></i></a>
+                Listing : {{selectedListing.title}} ({{selectedListing.created |  date:'medium' }})
+            </div>
+            <div class="ui-tab-container ui-tab-vertical" style="background-color: white">
+                <uib-tabset class="ui-tab">
+                    <uib-tab heading="Listing Detail" >
+                        <div class="tab-content-box">
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Listing Title</label>
+                                    <input ng-model="selectedListing.title" >
+                                </md-input-container>
+                                
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Property Infomation" >
+                        <div class="tab-content-box">
+
+                            <div>
+                                <md-input-container >
+                                    <label>MlS Number</label>
+                                    <input ng-model="property.mls_num" ng-enter="">
+                                </md-input-container>
+                                <a ui-wave=""  ng-click="loadPropertyInfo()"  href="javascript:;" class="btn-icon btn-icon-round btn-icon-sm btn-instagram ui-wave"><i class="fa fa-instagram"></i></a> 
+                            </div>
+
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Address</label>
+                                    <input ng-model="selectedListing.property_address" >
+                                </md-input-container>
+                            </div>
+
+                           
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Saller" >
+                        <div class="tab-content-box">
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Saller First Name</label>
+                                    <input ng-model="selectedListing.saller_first_name" >
+                                </md-input-container>
+                                <md-input-container flex >
+                                    <label>Saller Last Name</label>
+                                    <input ng-model="selectedListing.saller_last_name" >
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Buyer" >
+                        <div class="tab-content-box">
+                            <div layout layout-sm="column">
+                                <md-input-container flex >
+                                    <label>Bayer First Name</label>
+                                    <input ng-model="selectedListing.buyer_first_name" >
+                                </md-input-container>
+                                <md-input-container flex >
+                                    <label>Bayer Last Name</label>
+                                    <input ng-model="selectedListing.buyer_last_name" >
+                                </md-input-container>
+                            </div>
+                        </div>
+                    </uib-tab>
+                    <uib-tab heading="Forms" >
+                        <div class="tab-content-box">
+                            <button ng-click="" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+                                <span class="ng-scope" ng-click="genOfferForms()" > Offer</span>
+                            </button>
+
+                            <div class="row">
+
+                                <div class="col-md-4" ng-repeat="form in formList  | orderBy:'-created' ">
+                                    <a  href="{{form.path}}" target="_blank">
+                                        <div class="card bg-dark-light form-card">
+                                            <div class="card-content">
+                                              Form {{ formList.length - $index}}
+                                              <div>{{form.created | date: 'medium'}}</div>
+                                            </div>
+                                        </div>       
+                                    </a>
+
+                                    <!-- <a href="{{form.path}}" target="_blank">form #{{ $index}}</a> -->
+                                </div>
+
+                            </div>
+                        </div>
+                    </uib-tab>
+                   
+                    
+                </uib-tabset>
+            </div>  
+
+            <div style="text-align: right; margin-top: 20px;">
+                <button ng-click="updateOffer()" class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
+                <!-- <span class="fa fa-headphones ng-scope"></span> -->
+                    <span class="ng-scope">Save</span>
+                </button>
+            </div>
+
+        </div>
+
+
+
+
+
+
         <div>
             <ul>
-                <li class="offer" ng-repeat="offer in offers"   ng-click="openSlidePanel(offer)">
+                <li class="offer" ng-repeat="offer in offers"   ng-click="openOfferPanel(offer)">
                     <span class="title">{{ offer.title }}</span>
                     <div class="address">{{ offer.property_address }}</div>
+                    <span class="badge badge-info type-label">Offer</span>
                     <span class="badge badge-info created">{{ offer.created | date: 'mediumDate' }}</span>
-               
                 </li>
-        <!--     </ul>
-            <div class="offer" ng-repeat="offer in offers"  ng-click="openSlidePanel(offer)">
-                <div>{{ offer.title }}</div>  
-                <div>{{ offer.property_address }}</div>
-                <div>{{ offer.created | date: 'MMM d, y' }}</div>
-            </div> -->
+                <li class="offer" ng-repeat="listing in listings"   ng-click="openListingPanel(listing)">
+                    <span class="title">{{ listing.title }}</span>
+                    <div class="address">{{ listing.property_address }}</div>
+                    <span class="badge badge-info type-label">Listing</span>
+                    <span class="badge badge-info created">{{ listing.created | date: 'mediumDate' }}</span>
+                </li>
+            </ul>
+
         </div>
  
 

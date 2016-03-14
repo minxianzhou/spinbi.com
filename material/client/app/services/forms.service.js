@@ -31,6 +31,19 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
         });
     },
 
+    GetFormsByOffer : function( offerId, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'form/getFormByOffer';
+      $http.post(
+            baseLink, 
+   
+            { OfferId : offerId }
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
+
     AddOffer : function( data, callback ) {
       var baseLink= appConfig.setting.apiBaseLink + 'offer';
 
@@ -73,6 +86,34 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
         });
     },
     
+    AddListing : function( data, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'listing';
+
+      $http.post(
+            baseLink,
+            data, 
+            {}
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
+
+    GetListingsByAgent : function( data, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'listing/getListings';
+
+      $http.post(
+            baseLink,
+            data,
+            {}
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
+
     GetPropertyInfo : function( propertyNumber, callback ) {
       var baseLink= appConfig.setting.apiBaseLink + 'mls/single/' + propertyNumber;
 

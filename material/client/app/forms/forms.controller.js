@@ -119,12 +119,16 @@
 
     	var init = function(){
     		$scope.getOfferByAgent();
+    		$scope.getListingByAgent();
     	}
 
         $scope.contact = contact;
         $scope.selectedOffer = null;
+        $scope.selectedListing = null;
 
         $scope.offers = [];
+        $scope.listings = [];
+        $scope.formList = [];
 
         $scope.property = {
         	mls_num : '',
@@ -149,22 +153,44 @@
 		}
 
 
-        $scope.openSlidePanel = function(offer){
+        $scope.openOfferPanel = function(offer){
         	$scope.selectedOffer = offer;
+        	updateSelectedOfferFormList();
             $('.modal-header').css('overflow','hidden' );
             $('#action-button').addClass('shiftOut');
-            $('.slider-panel').addClass('open');
+            $('.offer-panel').addClass('open');
         }
 
-        $scope.closeSlidePanel = function(){
+        $scope.closeOfferPanel = function(){
             
             $('#action-button').removeClass('shiftOut');
-            $('.slider-panel').removeClass('open');
+            $('.offer-panel').removeClass('open');
             setTimeout(function(){
                 $('.modal-header').css('overflow','visible' );    
             },500);
             
         }
+
+
+        $scope.openListingPanel = function(listing){
+        	$scope.selectedListing = listing;
+        	//updateSelectedOfferFormList();
+            $('.modal-header').css('overflow','hidden' );
+            $('#action-button').addClass('shiftOut');
+            $('.listing-panel').addClass('open');
+        }
+
+        $scope.closeListingPanel = function(){
+            
+            $('#action-button').removeClass('shiftOut');
+            $('.listing-panel').removeClass('open');
+            setTimeout(function(){
+                $('.modal-header').css('overflow','visible' );    
+            },500);
+            
+        }
+
+
 
 
 		$scope.linkEnable = {
@@ -174,16 +200,32 @@
 
 
 
+		var updateSelectedOfferFormList = function(){
+			console.log('in');
+
+			FormService.GetFormsByOffer($scope.selectedOffer._id , function(err, result){
+
+				console.log(result);
+				$scope.formList = result.data;
+
+			});
+
+		}
+
+
         $scope.genOfferForms = function () {
-            FormService.GenerateOfferForm({Contact: contact} , function(err, result){
+
+
+            FormService.GenerateOfferForm({Contact: contact, Offer: $scope.selectedOffer} , function(err, result){
                 if(err){
                     console.log(err);
                 }else{
                     console.log(result);
-                    UpdateLinks(result.data.link,'test.pdf');
-                    $scope.linkEnable.offer = true;
+
+                    updateSelectedOfferFormList();
                 }
             });
+
         }
 
         
@@ -242,6 +284,50 @@
                 }
             });
         }
+
+        $scope.createListing = function(){
+            FormService.AddListing(
+            	{	
+            		contactId: $scope.contact._id
+            		
+            	} , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    $scope.listings.push(result.data);
+
+                }
+            });
+        }
+
+        $scope.updateListing = function(){
+            FormService.UpdateOffer(
+                $scope.selectedOffer, 
+                function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    //$scope.offers.push(result.data);
+
+                }
+            });
+        }
+
+        $scope.getListingByAgent = function(){
+            FormService.GetListingsByAgent({ contactId: $scope.contact._id} , function(err, result){
+                if(err){
+                    console.log(err);
+                }else{
+                    console.log(result);
+                    
+                    $scope.listings = result.data;
+                }
+            });
+        }
+
+
 
         $scope.loadPropertyInfo = function(){
             FormService.GetPropertyInfo($scope.property.mls_num , function(err, result){

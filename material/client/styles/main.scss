@@ -320,6 +320,15 @@ body{
 		.title{
 			font-size: 12px;
 		}
+
+		.type-label{
+			position: absolute;
+			bottom: 10px;
+			left: 10px;
+			font-size: 8px;
+			background-color: #7B979A;
+		}
+
 		.created{
 			position: absolute;
 			bottom: 10px;
@@ -342,7 +351,8 @@ body{
 		overflow: hidden;
 		padding: 0;
 		min-height: 600px;
-		.slider-panel{
+
+		.listing-panel{
 
 			-webkit-transition: all 0.35s ease-in-out;
 			-moz-transition: all 0.35s ease-in-out;
@@ -376,6 +386,53 @@ body{
 			.tab-content-box{
 				height: 450px;
 				overflow: auto;
+			}
+
+
+			.form-card{
+				font-size: 11px;
+			}
+		}
+
+		.offer-panel{
+
+			-webkit-transition: all 0.35s ease-in-out;
+			-moz-transition: all 0.35s ease-in-out;
+			-o-transition: all 0.35s ease-in-out;
+			transition: all 0.35s ease-in-out;
+			position: absolute;
+			top: 0px;
+			left: 900px;
+			width: 110%;
+			height: 100%;
+			background-color: #fff;
+			z-index: 10000;
+			padding: 15px 105px 15px 15px;
+
+			&.open{
+				left: 0px;
+			}
+
+			.header-bar{
+				position: relative;
+				font-size: 18px;
+				padding: 2px 0 10px 0;
+				.close-icon{
+					position: absolute;
+					right: 2px;
+				    top: 0;
+				    font-size: 25px;
+				}
+			}
+
+			.tab-content-box{
+				height: 450px;
+				overflow: auto;
+			}
+
+
+			.form-card{
+				font-size: 11px;
 			}
 		}		
 	}
