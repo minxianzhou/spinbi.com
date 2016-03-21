@@ -4,6 +4,9 @@ var services = angular.module('app.services.form',[]);
 
 services.factory('FormService', ['$http','appConfig', function($http,appConfig) {
   return {
+
+
+
   	GenerateOfferForm : function(data, callback ) {
         var baseLink= appConfig.setting.apiBaseLink + 'form/offer';   
 
@@ -31,6 +34,10 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
         });
     },
 
+
+
+
+
     GetFormsByOffer : function( offerId, callback ) {
       var baseLink= appConfig.setting.apiBaseLink + 'form/getFormByOffer';
       $http.post(
@@ -43,6 +50,21 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
           callback(err);
         });
     },
+
+    GetFormsByListing : function( listingId, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'form/getFormByListing';
+      $http.post(
+            baseLink, 
+   
+            { ListingId : listingId }
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
+
+
 
     AddOffer : function( data, callback ) {
       var baseLink= appConfig.setting.apiBaseLink + 'offer';
@@ -90,6 +112,19 @@ services.factory('FormService', ['$http','appConfig', function($http,appConfig) 
       var baseLink= appConfig.setting.apiBaseLink + 'listing';
 
       $http.post(
+            baseLink,
+            data, 
+            {}
+        ).then(function(res){
+           callback(null, res);
+        },function(err){
+          callback(err);
+        });
+    },
+
+    UpdateListing : function( data, callback ) {
+      var baseLink= appConfig.setting.apiBaseLink + 'listing';
+      $http.put(
             baseLink,
             data, 
             {}

@@ -174,7 +174,7 @@
 
         $scope.openListingPanel = function(listing){
         	$scope.selectedListing = listing;
-        	//updateSelectedOfferFormList();
+        	updateSelectedListingFormList();
             $('.modal-header').css('overflow','hidden' );
             $('#action-button').addClass('shiftOut');
             $('.listing-panel').addClass('open');
@@ -201,7 +201,7 @@
 
 
 		var updateSelectedOfferFormList = function(){
-			console.log('in');
+	
 
 			FormService.GetFormsByOffer($scope.selectedOffer._id , function(err, result){
 
@@ -212,6 +212,17 @@
 
 		}
 
+		var updateSelectedListingFormList = function(){
+		
+
+			FormService.GetFormsByListing($scope.selectedListing._id , function(err, result){
+
+				console.log(result);
+				$scope.formList = result.data;
+
+			});
+
+		}
 
         $scope.genOfferForms = function () {
 
@@ -230,17 +241,22 @@
 
         
         $scope.genListingForms = function () {
-            FormService.GenerateListingForm({} , function(err, result){
+            FormService.GenerateListingForm({Contact: contact, Listing: $scope.selectedListing} , function(err, result){
                 if(err){
                     console.log(err);
                 }else{
-                    var link = $('#downloadListingLink');
-					link.attr('href',result.data.link);
-					link.attr('download','test.pdf');
-                    $scope.linkEnable.listing = true;
+                     console.log(result);
+                     updateSelectedListingFormList();
                 }
             });
         }
+
+
+
+
+
+
+
 
         $scope.createOffer = function(){
             FormService.AddOffer(
@@ -285,6 +301,14 @@
             });
         }
 
+
+
+
+
+
+
+
+
         $scope.createListing = function(){
             FormService.AddListing(
             	{	
@@ -302,8 +326,8 @@
         }
 
         $scope.updateListing = function(){
-            FormService.UpdateOffer(
-                $scope.selectedOffer, 
+            FormService.UpdateListing(
+                $scope.selectedListing, 
                 function(err, result){
                 if(err){
                     console.log(err);
@@ -326,6 +350,15 @@
                 }
             });
         }
+
+
+
+
+
+
+
+
+
 
 
 

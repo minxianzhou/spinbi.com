@@ -188,8 +188,8 @@
                     </uib-tab>
                     <uib-tab heading="Forms" >
                         <div class="tab-content-box">
-                            <button ng-click="" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
-                                <span class="ng-scope" ng-click="genOfferForms()" > Offer</span>
+                            <button  ng-click="genOfferForms()" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
+                                <span class="ng-scope" >Create Offer Form</span>
                             </button>
 
                             <div class="row">
@@ -296,7 +296,8 @@
                     <uib-tab heading="Forms" >
                         <div class="tab-content-box">
                             <button ng-click="" class="md-raised btn-w-xs md-accent md-button md-ink-ripple" type="button" >
-                                <span class="ng-scope" ng-click="genOfferForms()" > Offer</span>
+                                <!-- <span class="ng-scope" ng-click="genOfferForms()" > Offer</span> -->
+                                <span ng-click="genListingForms()" class="ng-scope" >Create Listing Form</span>
                             </button>
 
                             <div class="row">
@@ -323,8 +324,7 @@
             </div>  
 
             <div style="text-align: right; margin-top: 20px;">
-                <button ng-click="updateOffer()" class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
-                <!-- <span class="fa fa-headphones ng-scope"></span> -->
+                <button ng-click="updateListing()" class="md-raised btn-w-xs md-warn md-button md-ink-ripple" type="button" >
                     <span class="ng-scope">Save</span>
                 </button>
             </div>
