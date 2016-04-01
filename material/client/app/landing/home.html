@@ -4,153 +4,164 @@
 	}
 </style>
 
+<script src="http://iarouse.com/dist-material-design-admin/landing/scripts/modernizr.js"></script>
 
-<div  ng-include="'app/landing/share/header.html'"></div>
 
-<div class="contrainor">
+<div data-spy="scroll" data-target=".header" data-offset="80">
+  <div  ng-include="'app/landing/share/header.html'"></div>
+
+  <div class="contrainor">
+    <div class="slider" id="slider">
+      <div class="center-containor">
+        <svg width="60px" height="60px" viewBox="0 0 80 80" class="ip-inner">
+            <path d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" class="ip-loader-circlebg"></path>
+            <path id="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" class="ip-loader-circle"></path>
+          </svg>
+      </div>
+    </div>
     <div class="center-containor">
 
 
-    <div class="row ui-section">
-        <div id="#features" class="col-lg-8 clearfix">
-            <h2 class="section-header">Features</h2>
-        </div>
-        <div class="col-md-12">
-            <div class="panel panel-default">
-                <div class="panel-body padding-lg-h">
+      <div class="row ui-section">
+          <div id="#features" class="col-lg-8 clearfix">
+              <h2 class="section-header">Features</h2>
+          </div>
+          <div class="col-md-12">
+              <div class="panel panel-default">
+                  <div class="panel-body padding-lg-h">
 
-                    <div class="row">
-                        <div class="col-md-4">
-                            <div class="ih-item ih-material">
-                                <a href="javascript:;">
-                                    <div class="img">
-                                        <img src="images/assets/600_400-1.jpg" alt="">
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-mask bg-primary"></div>
-                                        <div class="info-content">
-                                            <div class="info-inner">
-                                                <h3>Heading Here</h3>
-                                                <p>Description goes here</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>                            
-                        </div>
-                        <div class="col-md-4">
-                            <div class="ih-item ih-material">
-                                <a href="javascript:;">
-                                    <div class="img">
-                                        <img src="images/assets/600_400-2.jpg" alt="">
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-mask bg-info"></div>
-                                        <div class="info-content">
-                                            <div class="info-inner">
-                                                <h3>Heading Here</h3>
-                                                <p>Description goes here</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>                                
-                        </div>
-                        <div class="col-md-4">
-                            <div class="ih-item ih-material">
-                                <a href="javascript:;">
-                                    <div class="img">
-                                        <img src="images/assets/600_400-3.jpg" alt="">
-                                    </div>
-                                    <div class="info">
-                                        <div class="info-mask bg-dark"></div>
-                                        <div class="info-content">
-                                            <div class="info-inner">
-                                                <h3>Heading Here</h3>
-                                                <p>Description goes here</p>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </a>
-                            </div>                                
-                        </div>
-
-
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
+                      <div class="row">
+                          <div class="col-md-4">
+                              <div class="ih-item ih-material">
+                                  <a href="javascript:;">
+                                      <div class="img">
+                                          <img src="images/assets/600_400-1.jpg" alt="">
+                                      </div>
+                                      <div class="info">
+                                          <div class="info-mask bg-primary"></div>
+                                          <div class="info-content">
+                                              <div class="info-inner">
+                                                  <h3>Heading Here</h3>
+                                                  <p>Description goes here</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>                            
+                          </div>
+                          <div class="col-md-4">
+                              <div class="ih-item ih-material">
+                                  <a href="javascript:;">
+                                      <div class="img">
+                                          <img src="images/assets/600_400-2.jpg" alt="">
+                                      </div>
+                                      <div class="info">
+                                          <div class="info-mask bg-info"></div>
+                                          <div class="info-content">
+                                              <div class="info-inner">
+                                                  <h3>Heading Here</h3>
+                                                  <p>Description goes here</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>                                
+                          </div>
+                          <div class="col-md-4">
+                              <div class="ih-item ih-material">
+                                  <a href="javascript:;">
+                                      <div class="img">
+                                          <img src="images/assets/600_400-3.jpg" alt="">
+                                      </div>
+                                      <div class="info">
+                                          <div class="info-mask bg-dark"></div>
+                                          <div class="info-content">
+                                              <div class="info-inner">
+                                                  <h3>Heading Here</h3>
+                                                  <p>Description goes here</p>
+                                              </div>
+                                          </div>
+                                      </div>
+                                  </a>
+                              </div>                                
+                          </div>
 
 
-    <section class="row ui-section">
-        <div class="col-lg-8 clearfix">
-            <h2 class="section-header">Image Card</h2>
-        </div>
-        <div class="col-md-12">
-            <div class="row">
-                <div class="col-md-4">
-                    <div class="card bg-white">
-                        <div class="card-image">
-                            <img src="images/assets/600_400-2.jpg">
-                            <span class="card-title">Image Card</span>
-                        </div>
-                        <div class="card-content">
-                            <p>Hey there, I am a very simple card. I am good at containing small bits of information.
-                                I am quite convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="javascript:;">A link</a>
-                            <a href="javascript:;" class="color-primary">A link</a>
-                        </div>
-                    </div>            
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-white">
-                        <div class="card-image">
-                            <img src="images/assets/600_400-3.jpg">
-                            <span class="card-title">Image Card with Pofile</span>
-                        </div>
-                        <div class="card-content">
-                            <a class="card-profile-img pull-right" href="javascript:;"><img src="images/g1.jpg" alt=""></a>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="javascript:;">A link</a>
-                            <a href="javascript:;">A link</a>
-                        </div>
-                    </div>
-                </div>
-                <div class="col-md-4">
-                    <div class="card bg-white">
-                        <div class="card-image">
-                            <img src="images/assets/600_400-1.jpg">
-                            <span class="card-title">Image Card with Icon Button</span>
-                        </div>
-                        <div class="card-content">
-                            <a class="card-button pull-right" href="javascript:;">
-                                <button class="btn btn-icon btn-icon-round btn-floating btn-danger"><i class="fa fa-heart"></i></button>
-                            </a>
-                            <p>I am a very simple card. I am good at containing small bits of information.
-                                I am quite convenient because I require little markup to use effectively.</p>
-                        </div>
-                        <div class="card-action">
-                            <a href="javascript:;">A link</a>
-                            <a href="javascript:;">A link</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-        </div>                
-    </section>    
+                      </div>
+                  </div>
+              </div>
+          </div>
+      </div>
+
+
+      <section class="row ui-section">
+          <div class="col-lg-8 clearfix">
+              <h2 class="section-header">Image Card</h2>
+          </div>
+          <div class="col-md-12">
+              <div class="row">
+                  <div class="col-md-4">
+                      <div class="card bg-white">
+                          <div class="card-image">
+                              <img src="images/assets/600_400-2.jpg">
+                              <span class="card-title">Image Card</span>
+                          </div>
+                          <div class="card-content">
+                              <p>Hey there, I am a very simple card. I am good at containing small bits of information.
+                                  I am quite convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                              <a href="javascript:;">A link</a>
+                              <a href="javascript:;" class="color-primary">A link</a>
+                          </div>
+                      </div>            
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card bg-white">
+                          <div class="card-image">
+                              <img src="images/assets/600_400-3.jpg">
+                              <span class="card-title">Image Card with Pofile</span>
+                          </div>
+                          <div class="card-content">
+                              <a class="card-profile-img pull-right" href="javascript:;"><img src="images/g1.jpg" alt=""></a>
+                              <p>I am a very simple card. I am good at containing small bits of information.
+                                  I am convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                              <a href="javascript:;">A link</a>
+                              <a href="javascript:;">A link</a>
+                          </div>
+                      </div>
+                  </div>
+                  <div class="col-md-4">
+                      <div class="card bg-white">
+                          <div class="card-image">
+                              <img src="images/assets/600_400-1.jpg">
+                              <span class="card-title">Image Card with Icon Button</span>
+                          </div>
+                          <div class="card-content">
+                              <a class="card-button pull-right" href="javascript:;">
+                                  <button class="btn btn-icon btn-icon-round btn-floating btn-danger"><i class="fa fa-heart"></i></button>
+                              </a>
+                              <p>I am a very simple card. I am good at containing small bits of information.
+                                  I am quite convenient because I require little markup to use effectively.</p>
+                          </div>
+                          <div class="card-action">
+                              <a href="javascript:;">A link</a>
+                              <a href="javascript:;">A link</a>
+                          </div>
+                      </div>
+                  </div>
+              </div>
+          </div>                
+      </section>    
 
 
 
       <div class="divider divider-lg"></div>
       <div class="divider divider-lg"></div>
 
-      
+        
       <div class="row ui-section">
           <div class=" clearfix">
               <h2 class="section-header">Membership</h2>
@@ -228,15 +239,33 @@
           </div>
       </div>
 
+      <div id="dddd">
+         <header>
+              <h2 class="section-heading-underline">Key Features</h2>
+            </header>
+      </div>
+
       <div class="divider divider-lg"></div>
       <div class="divider divider-lg"></div>
       <div class="divider divider-lg"></div>
 
+
+
+    </div>
 
 
   </div>
-
+  <div  ng-include="'app/landing/share/footer.html'"></div>
 
 </div>
 
-<div  ng-include="'app/landing/share/footer.html'"></div>
+<script type="text/javascript">
+
+  $(window).on('resize', function  () {
+    //console.log($(document));  
+    console.log($(window).height());
+
+    $('#slider').height($(window).height());
+  })
+  
+</script>
