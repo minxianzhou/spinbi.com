@@ -14,7 +14,7 @@ var app_service = angular.module(
 
 
 
-app_service.factory('authInterceptor', function ($rootScope, $q, $window, $location) {
+app_service.factory('authInterceptor', [ '$rootScope', '$q', '$window', '$location', function ($rootScope, $q, $window, $location) {
   return {
     request: function (config) {
 	    config.headers = config.headers || {};
@@ -41,12 +41,12 @@ app_service.factory('authInterceptor', function ($rootScope, $q, $window, $locat
       return response || $q.when(response);
     }
   };
-})
+}])
 
 
-.config(function ($httpProvider) {
+.config(['$httpProvider',function ($httpProvider) {
   // $httpProvider.defaults.headers.post['XSRF-AUTH'] = 
   //       "some accessToken to be generated later";
   $httpProvider.interceptors.push('authInterceptor');
-});
+}]);
 
