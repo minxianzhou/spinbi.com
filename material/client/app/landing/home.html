@@ -7,17 +7,58 @@
 <script src="http://iarouse.com/dist-material-design-admin/landing/scripts/modernizr.js"></script>
 
 
-<div data-spy="scroll" data-target=".header" data-offset="80">
+<div data-spy="scroll" data-target=".header" data-offset="80"  ng-controller="HomeCtrl">
   <div  ng-include="'app/landing/share/header.html'"></div>
 
   <div class="contrainor">
     <div class="slider" id="slider">
-      <div class="center-containor">
-        <svg width="60px" height="60px" viewBox="0 0 80 80" class="ip-inner">
-            <path d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" class="ip-loader-circlebg"></path>
-            <path id="ip-loader-circle" d="M40,10C57.351,10,71,23.649,71,40.5S57.351,71,40.5,71 S10,57.351,10,40.5S23.649,10,40.5,10z" class="ip-loader-circle"></path>
-          </svg>
-      </div>
+
+          <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" no-pause="false">
+            
+            <uib-slide index="0" class="slide-img"  style="background-image:url('/images/slider/1.jpg')">
+              <!-- <img ng-src="/images/slider/1.jpg"> -->
+              <div class="carousel-caption">
+                <h4>Slide 1</h4>
+                <p>Slide One</p>
+              </div>
+            </uib-slide>
+
+            <uib-slide index="1" class="slide-img" style="background-image:url('/images/slider/2.jpg')">
+              <!-- <img ng-src="/images/slider/2.jpg" > -->
+              <div class="carousel-caption">
+                <h4>Slide 2</h4>
+                <p>Slide two</p>
+              </div>
+            </uib-slide>
+
+
+            <uib-slide index="2" class="slide-img" style="background-image:url('/images/slider/3.jpg')">
+              <!-- <img ng-src="/images/slider/3.jpg" > -->
+              <div class="carousel-caption">
+                <h4>Slide 3</h4>
+                <p>Slide 3</p>
+              </div>
+            </uib-slide>
+
+            <uib-slide index="3" class="slide-img" style="background-image:url('/images/slider/4.jpg')">
+              <!-- <img ng-src="/images/slider/3.jpg" > -->
+              <div class="carousel-caption">
+                <h4>Slide 3</h4>
+                <p>Slide 3</p>
+              </div>
+            </uib-slide>
+
+
+            <uib-slide index="4" class="slide-img" style="background-image:url('/images/slider/5.jpg')">
+              <!-- <img ng-src="/images/slider/3.jpg" > -->
+              <div class="carousel-caption">
+                <h4>Slide 3</h4>
+                <p>Slide 3</p>
+              </div>
+            </uib-slide>
+
+        </uib-carousel>
+     
     </div>
     <div class="center-containor">
 
@@ -259,13 +300,3 @@
 
 </div>
 
-<script type="text/javascript">
-
-  $(window).on('resize', function  () {
-    //console.log($(document));  
-    console.log($(window).height());
-
-    $('#slider').height($(window).height());
-  })
-  
-</script>

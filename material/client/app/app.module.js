@@ -20,6 +20,7 @@
         ,'app.contact'
         ,'app.forms'
         ,'app.header'
+        ,'app.home'
 
         // Custome service
         ,'app.services'
