@@ -20,6 +20,8 @@
             $('#slider .slide-img').height($(window).height()-80);
           }
 
+
+
         var init = function(){
             setTimeout(function(){
 
@@ -28,7 +30,7 @@
                     resize();
                 })
                 resize();    
-            },500);
+            },10);
             
 
         };
