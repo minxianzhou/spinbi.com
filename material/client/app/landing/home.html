@@ -4,19 +4,40 @@
 	}
 </style>
 
-<script src="http://iarouse.com/dist-material-design-admin/landing/scripts/modernizr.js"></script>
+<script src="http://glyphicons.com/js/libs/modernizr.js"></script>
 
 
 <div data-spy="scroll" data-target=".header" data-offset="80"  ng-controller="HomeCtrl">
   <div  ng-include="'app/landing/share/header.html'"></div>
 
   <div class="contrainor">
-    <div class="slider" id="slider">
+
+    <div class="slider-wraper">
+      <ul  rn-carousel rn-carousel-index="carouselIndex" rn-carousel-auto-slide="5" rn-carousel-transition="fadeAndSlide" class="slider" >
+        <li ng-repeat="slider in sliders" >
+          <div class="layer" style="background-image:url({{slider.imgUrl}})">
+            
+          </div>
+        </li>
+        <!-- <li >
+          <div class="layer" style="background-image:url('/images/slider/2.jpg')">
+          </div>
+        </li> -->
+      </ul>
+
+      <div rn-carousel-indicators ng-if="sliders.length > 1" slides="sliders" rn-carousel-index="carouselIndex"></div>
+      <div ng-click="nextSlide()" class="slide-side left"><i class="zmdi zmdi-chevron-left"></i></div>
+      <div ng-click="preSlide()"  class="slide-side right"><i class="zmdi zmdi-chevron-right"></i></div>
+
+    </div>
+
+
+
+<!--     <div class="slider" id="slider">
 
           <uib-carousel active="active" interval="myInterval" no-wrap="noWrapSlides" no-pause="false">
             
             <uib-slide index="0" class="slide-img"  style="background-image:url('/images/slider/1.jpg')">
-              <!-- <img ng-src="/images/slider/1.jpg"> -->
               <div class="carousel-caption">
                 <h4>Slide 1</h4>
                 <p>Slide One</p>
@@ -24,7 +45,6 @@
             </uib-slide>
 
             <uib-slide index="1" class="slide-img" style="background-image:url('/images/slider/2.jpg')">
-              <!-- <img ng-src="/images/slider/2.jpg" > -->
               <div class="carousel-caption">
                 <h4>Slide 2</h4>
                 <p>Slide two</p>
@@ -33,7 +53,6 @@
 
 
             <uib-slide index="2" class="slide-img" style="background-image:url('/images/slider/3.jpg')">
-              <!-- <img ng-src="/images/slider/3.jpg" > -->
               <div class="carousel-caption">
                 <h4>Slide 3</h4>
                 <p>Slide 3</p>
@@ -41,7 +60,6 @@
             </uib-slide>
 
             <uib-slide index="3" class="slide-img" style="background-image:url('/images/slider/4.jpg')">
-              <!-- <img ng-src="/images/slider/3.jpg" > -->
               <div class="carousel-caption">
                 <h4>Slide 3</h4>
                 <p>Slide 3</p>
@@ -50,7 +68,6 @@
 
 
             <uib-slide index="4" class="slide-img" style="background-image:url('/images/slider/5.jpg')">
-              <!-- <img ng-src="/images/slider/3.jpg" > -->
               <div class="carousel-caption">
                 <h4>Slide 3</h4>
                 <p>Slide 3</p>
@@ -60,6 +77,9 @@
         </uib-carousel>
      
     </div>
+
+ -->
+
     <div class="center-containor">
 
 

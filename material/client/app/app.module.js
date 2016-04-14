@@ -30,6 +30,8 @@
         ,'ngMap'
         ,'textAngular'
         ,'ngMask'
+        // ,'angular-touch'
+        ,'angular-carousel'
     ]);
 
 })();

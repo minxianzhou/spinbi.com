@@ -236,25 +236,89 @@ body{
 
 
 
-.slider{
 
-	.slide-img{
-	
-		margin: 0;
-	    background-position: center center;
-	    background-repeat: no-repeat;
-	    background-size: cover;
-	    overflow: hidden
+.slider-wraper{
+	position: relative;
+
+	.slider{
+		.layer{
+		
+			margin: 0;
+		    background-position: center center;
+		    background-repeat: no-repeat;
+		    background-size: cover;
+		    overflow: hidden
+		}
+	}
+
+
+	.slide-side{
+		position: absolute;
+		
+		top: 0;
+		display: inline-block;
+		width: 13%;
+		background-color:transparent;
+		height: 100%;
+		vertical-align: middle;
+		text-align: center;
+
+		&.left{
+			left: 0;
+
+			.zmdi{
+				left: 40%;
+			}
+		}
+
+		&.right{
+			right: 0;
+			.zmdi{
+				right: 40%;
+			}
+		}
+
+		&:hover{
+			cursor:pointer;
+			/*background-color: rgba(115, 75, 75, 0.09);*/
+			.zmdi{
+				display: block;
+			}
+		}
+
+		.zmdi{
+			position: absolute;
+			font-size: 90px;
+			color: rgba(0, 0, 0, 0.28);
+			top: 43%;
+			display: none;
+		}
+	}
+
+
+	.rn-carousel-indicator{
+		margin: 0 auto;
+		position: absolute;
+		bottom: 30px;
+		width: 100%;
+		text-align: center;
+
+		span{
+			margin-right: 8px;
+			font-size: 30px;
+			&.active{
+				color: #F1BDBD;
+			}
+		}
+
+
 	}
 }
 
 
 
-
-
 .contact-card-view{
 	position: relative;
-	
 	height: 70vh;
 
 
@@ -267,6 +331,7 @@ body{
 
 		&.with-button{
 			height: 200px;
+
 		}
 	}
 	.card-label{

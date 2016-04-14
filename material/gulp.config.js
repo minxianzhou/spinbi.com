@@ -12,6 +12,7 @@ module.exports = function() {
         index: client + "/index.html",
         alljs: [
             client + "/app/**/*.js",
+
             './*.js'
         ],
         assets: [
@@ -23,6 +24,7 @@ module.exports = function() {
             client + "/bower_components/weather-icons/font/*", 
             client + "/bower_components/weather-icons/fonts/*", 
             client + "/bower_components/material-design-iconic-font/dist/**/*",
+            client + "/bower_components/angular-carousel/dist/angular-carousel.css",
             client + "/fonts/**/*",
             client + "/i18n/**/*", 
             client + "/images/**/*", 
@@ -36,6 +38,8 @@ module.exports = function() {
         ],
         js: [
             client + "/bower_components/angular-mask/dist/*",
+            client + "/bower_components/angular-touch/angular-touch.js",
+            client + "/bower_components/angular-carousel/dist/angular-carousel.js",
             clientApp + "/**/*.module.js",
             clientApp + "/**/*.js",
             '!' + clientApp + "/**/*.spec.js"
