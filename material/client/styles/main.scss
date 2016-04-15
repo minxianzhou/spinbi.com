@@ -200,13 +200,17 @@ body{
 	height: 80px;
 	width: 100%;
 	background-color: white;
+	/*background-color: rgba(255, 255, 255, 0);*/
 	box-shadow: 0 2px 5px 0 rgba(0, 0, 0, 0.16), 0 2px 10px 0 rgba(0, 0, 0, 0.12);
 	position: fixed;
 	z-index: 10;
 }
+
 .header-span{
 	height: 80px;
 }
+
+
 .navbar{
 	height: 80px;
     padding: 14px 0px;

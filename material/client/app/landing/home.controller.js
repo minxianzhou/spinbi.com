@@ -37,6 +37,8 @@
             $('.slider .layer').height($(window).height()-80);
           }
 
+
+
         var init = function(){
 
             $scope.sliders.push({
@@ -77,7 +79,13 @@
                     resize();
                 })
                 resize();    
+<<<<<<< HEAD
             },500);
+=======
+            },10);
+            
+
+>>>>>>> origin/master
         };
 
 
