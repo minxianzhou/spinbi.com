@@ -46,8 +46,8 @@
         };
 
         var setting = {
-            //apiBaseLink : 'http://localhost:1000/api/'
-            apiBaseLink : 'https://api.spinbi.com/api/'
+            apiBaseLink : 'http://localhost:1000/api/'
+            //apiBaseLink : 'https://api.spinbi.com/api/'
         };
 
         return {
