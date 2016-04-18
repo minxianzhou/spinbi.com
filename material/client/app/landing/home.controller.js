@@ -20,15 +20,24 @@
         $scope.carouselIndex = 0;
 
 
+        $scope.navbarCollapsed = true;
+
+        $scope.closeNav = function(){
+            $scope.navbarCollapsed = true;
+        }
 
         $scope.nextSlide = function(){
             if($scope.carouselIndex+1 < $scope.sliders.length)    
                 $scope.carouselIndex++;
+            else
+                $scope.carouselIndex = 0;
         }
 
         $scope.preSlide = function(){
             if($scope.carouselIndex >  0)    
                 $scope.carouselIndex--;
+            else
+                $scope.carouselIndex = $scope.sliders.length - 1;
         }
 
 
