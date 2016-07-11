@@ -104,7 +104,14 @@
         <h3 ng-if="contactModalmode=='Edit'">Edit Contact</h3>
     </div>
     <div class="modal-body">
-        
+        <div layout layout-sm="column" ng-if="contactModalmode=='Edit'">
+            <md-input-container flex>
+                <label>Transfer Email</label>
+                <input value="{{contact.shortId}}@72.136.190.95" disabled="disabled">
+                <!-- <input value="{{contact.shortId}}@exmail.spinbi.com" disabled="disabled"> -->
+            </md-input-container>
+        </div>
+
         <div layout layout-sm="column">
             <md-input-container flex>
                 <label>First Name</label>
